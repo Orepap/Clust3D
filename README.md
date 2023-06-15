@@ -3,10 +3,10 @@
 A clustering tool for high-dimensional timeseries data.
 
 Authors:  
-Orestis D. Papagiannopoulos
-Vasileios C. Pezoulas
-Costas Papaloukas
-Dimitrios I. Fotiadis
+Orestis D. Papagiannopoulos  
+Vasileios C. Pezoulas  
+Costas Papaloukas  
+Dimitrios I. Fotiadis  
 
 Unit of Medical Technology and Intelligent Information Systems, Dept. of Materials Science and Engineering, University of Ioannina, Ioannina GR45110, Greece
 
