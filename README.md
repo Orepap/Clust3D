@@ -1,5 +1,4 @@
-# TMDC
-Timeseries Multi-Dimensional Clustering tool
+# Timeseries Multi-Dimensional Clustering tool
 
 A clustering tool for high-dimensional timeseries data.
 
