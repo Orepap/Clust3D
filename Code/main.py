@@ -13,7 +13,7 @@ Institution                             :    University of Ioannina, Ioannina, G
                                              University of Ioannina, Ioannina GR45110, Greece.
 
 Contact                                 :    orepap@uoi.gr
-GitHub                                  :    https://github.com/Orepap/MDC
+GitHub                                  :    https://github.com/Orepap/TMDC
 
 """
 
