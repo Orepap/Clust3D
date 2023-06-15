@@ -2,7 +2,6 @@ import numpy as np
 from training import train_MDC
 from matplotlib import pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
-# from neuron_init_function import neurons_initialization
 from neuron_init import neurons_initialization
 
 
