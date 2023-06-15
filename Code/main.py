@@ -1,6 +1,6 @@
 """
 Authors: {
-            Orestis D. Papagiannopoulos :   orepap_a@hotmail.com
+            Orestis D. Papagiannopoulos :   orepap@uoi.gr
             Vasileios Pezoulas          :   bpezoulas@gmail.com
             Costas Papaloukas           :   papalouk@uoi.gr
             Dimitrios I. Fotiadis       :   fotiadis@uoi.gr
