@@ -2,7 +2,7 @@
 
 TMDC. A clustering tool for high-dimensional timeseries data.
 
-Authors:  
+ 
 • Orestis D. Papagiannopoulos  
 • Vasileios C. Pezoulas  
 • Costas Papaloukas  
