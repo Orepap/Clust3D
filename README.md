@@ -5,13 +5,15 @@ A clustering tool to efficiently associate high-dimensional and time-dependent d
 
 
 # INSTALL
-pip install git+https://github.com/Orepap/TMDC.git
+'pip install git+https://github.com/Orepap/TMDC.git'
 
 # PREREQUISITES
+```python
 scikit-learn 1.0.2
 numpy 1.21.6
 pandas 1.4.0
 matplotlib 3.5.1
+```
 
 # USAGE
 ```python
