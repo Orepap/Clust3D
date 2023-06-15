@@ -14,11 +14,9 @@ pandas 1.4.0
 matplotlib 3.5.1
 
 # USAGE
+```python
 from TMDC.main import TMDC
 
-
-# Specify your paths
-```python
 data_file = "..." # path to the data file
 correlation_file = "..." path to the correlation file
 
