@@ -13,7 +13,7 @@ Dept. of Materials Science and Engineering
 University of Ioannina   
 Ioannina, Greece
 
-Contanct: orepap@uoi.gr
+Contact: orepap@uoi.gr
 
 # INSTALL
 
