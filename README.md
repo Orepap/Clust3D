@@ -32,7 +32,7 @@ TMDC requires two files as input. The first one is the data file which contains 
 
 The second one, is an UTF-8 or ANSI format txt file, in which the correlation between the sample class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals have to be specified.
 
-Specifically for Data Matrix Files from the Gene Expression Omnibus [], the following steps are required in preparation of those two files.
+Specifically for Data Matrix Files from the Gene Expression Omnibus, the following steps are required in preparation of those two files.
 
 For the data file, the user needs to:  
 •	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus  
