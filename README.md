@@ -28,9 +28,7 @@ clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correl
 ```
 
 # INPUT FILES
-TMDC requires two files as input. The first one is the data file which contains a table with the features and all the samples of the different time intervals and can be either a txt or a csv file.
-
-The second one, is an UTF-8 or ANSI format txt file, in which the correlation between the sample class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals have to be specified.
+TMDC requires two files as input. The first one is the data file which contains a table with the features and all the samples of the different time intervals and can be either a txt or a csv file. The second one, is an UTF-8 or ANSI format txt file, in which the correlation between the sample class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals have to be specified.
 
 Specifically for Data Matrix Files from the Gene Expression Omnibus, the following steps are required in preparation of those two files.
 
