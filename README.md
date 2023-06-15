@@ -48,4 +48,26 @@ For the correlation file, the user needs to create a txt file in UTF-8 or ANSI f
 
 In this particular example, KD1 is a sample class label and GSM1, GSM2 and GSM3 correspond to that label’s samples at (e.g.) three time intervals. The naming of the sample class labels is arbitrary.
 The following have to be true for the correlation file:
-1) One space per word, 2) No space at the end of each line, 3) No space at the end of the file, 4) No number as the first label letter.
+```python
+1) One space per word
+2) No space at the end of each line
+3) No space at the end of the file
+4) No number as the first label letter
+```
+
+# HOW IT WORKS
+The Euclidean distance is first computed between an input sample and all the neurons. Then, the neuron that has the smallest distance to the sample is declared as the best matching unit (BMU) and its weights along with its nearest neighbor neurons (self-organizing) are re-adjusted to closer mimic the input sample. The novelty is the introduction of matrix norms as distance concepts. Conventional distance metrics like the Euclidean, are typically calculated between vectors. In TMDC, where the data points are matrices, the distance between two data points is defined as the mathematical norm of the matrix of their differences. As such, TMDC introduces the capability to train the neural network given the input samples and the neurons as matrices and not just as vectors, containing both the temporal and the spatial information. Thus, the clustering can be implemented directly on the patients, given the different timepoints altogether.
+
+The update function for the neurons is defined as:
+    W_j (i+1)= W_j (i)+U(W_j,W_q,i)  y(i)  [X-W_q ],
+
+where W_j (i+1) is the matrix of neuron with index j at time (i+1), with i being the current iteration, X is the matrix of the input sample, W_q is the BMU, and y is the learning rate, which decreases exponentially:
+              y= y_o  exp⁡〖((-i)/t_1 ),〗	(2)
+              
+where y_o is the initial learning rate, t_1 is a user defined constant which controls the exponential decrease of the learning rate, and U(W_j,W_q,i) is the neighborhood function, which dictates the cooperation between neurons. It decreases exponentially and includes a reducing Gaussian distance function [7]:
+
+         U = exp((-〖〖 d〗_jq〗^2)/(2 〖(σ_(0 ) exp((-i log⁡(σ_0 ))/t_2 ))〗^2 )),	(3)
+where σ_0 is the standard deviation of the initial Euclidean distances of the randomly initiated neurons, t_2  is a user defined constant which controls the exponential decrease of the neighborhood function and lastly, d_jq is the Euclidean distance between a neighbor neuron and the BMU, which is calculated using the Frobenius norm of the neuron matrices difference:
+        ‖W_j-W_q ‖_F= ‖D‖_F=√(∑_(k=1)^m▒∑_(l=1)^n▒|D_kl |^2 ) 	(4)
+
+
