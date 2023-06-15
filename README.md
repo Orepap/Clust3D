@@ -43,10 +43,9 @@ For the data file, the user needs to:
 
 For the correlation file, the user needs to create a txt file in UTF-8 or ANSI format, like the example below:
 
-![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/4c740fbb-1eb1-4964-b6a8-364f4265fff2)
+![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/80b3de60-8e8e-481e-8466-0033ddc2d5b6)
 
-
-In this particular example, KD1 is a sample class label and GSM1, GSM2 and GSM3 correspond to that label’s samples at (e.g.) three time intervals. The naming of the sample class labels is arbitrary.
+In this particular example, P1 is a patient and S1, S2 and S3 correspond to that patients’s samples at (e.g.) three time intervals. The naming of the sample class labels is arbitrary.
 The following have to be true for the correlation file:
 
 1) One space per word  
