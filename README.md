@@ -1,6 +1,6 @@
 # Timeseries Multi-Dimensional Clustering tool
 
-A clustering tool for high-dimensional timeseries data.
+TMDC. A clustering tool for high-dimensional timeseries data.
 
 Authors:  
 • Orestis D. Papagiannopoulos  
