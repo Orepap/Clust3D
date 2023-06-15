@@ -34,11 +34,11 @@ The second one, is an UTF-8 or ANSI format txt file, in which the correlation be
 
 Specifically for Data Matrix Files from the Gene Expression Omnibus [], the following steps are required in preparation of those two files.
 
-For the data file, the user needs to:
-•	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus
-•	Delete everything from within the txt file up until (and) the line ”!series_matrix_table_begin”
-•	Delete the very last line “!series_matrix_table_end”
-•	Save the file and exit
+For the data file, the user needs to:  
+•	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus  
+•	Delete everything from within the txt file up until (and) the line ”!series_matrix_table_begin”  
+•	Delete the very last line “!series_matrix_table_end”  
+•	Save the file and exit  
 
 
 For the correlation file, the user needs to create a txt file in UTF-8 or ANSI format, like the example below:
