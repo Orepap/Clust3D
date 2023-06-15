@@ -11,7 +11,7 @@ Dimitrios I. Fotiadis
 Unit of Medical Technology and Intelligent Information Systems  
 Dept. of Materials Science and Engineering
 University of Ioannina   
-Greece
+Ioannina, Greece
 
 Contanct: orepap@uoi.gr
 
