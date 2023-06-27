@@ -2,7 +2,7 @@ Folder “Example 1” contains the processed and ready to be used data file and
 They correspond to the Gene Expression Omnibus (GEO) Series Matrix File for the GSE80060 series. 
 GSE80060 provides gene expression data of whole blood of systemic juvenile idiopathic arthritis (SJIA) patients treated with canakinumab.
 
-Usage:
+Usage:  
 The user has to first download the corresponding files.
 
 ```python
