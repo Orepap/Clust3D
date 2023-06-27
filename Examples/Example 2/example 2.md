@@ -1,7 +1,7 @@
 Folder “Example 2” contains the processed and ready to be used data file and correlation file.  
 They correspond to the Gene Expression Omnibus (GEO) Series Matrix File for the GSE97075 series.  
 
-GSE97075 provides gene expression data of hyperimmunoglobulin D syndrome (HIDS) patients with periodic fever syndrome patients treated with canakinumab
+GSE97075 provides gene expression data of hyperimmunoglobulin D syndrome (HIDS) patients with periodic fever syndrome patients treated with canakinumab.
 
 
 Usage:  
