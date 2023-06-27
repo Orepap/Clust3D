@@ -11,7 +11,6 @@ correlation_file = "..." # path to the correlation file
 
 clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correlation_file, n_neurons=-1, depth="auto", random_state=0)
 
-
 ```  
 
 The code returs a dictionary with the cluster memberships (clusters),  the clustering centers (neurons) and a list with the clustering labels (cl_labels).
