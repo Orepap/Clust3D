@@ -1,6 +1,10 @@
-Folder “example 1” contains the processed and ready to be used data file and correlation file. 
+Folder “Example 1” contains the processed and ready to be used data file and correlation file. 
+
 They correspond to the Gene Expression Omnibus (GEO) Series Matrix File for the GSE80060 series. 
 GSE80060 provides gene expression data of whole blood of systemic juvenile idiopathic arthritis (SJIA) patients treated with canakinumab.
 
-File “example 1.py“ contains the code for using MDC with its default parameters on that particular dataset. The user has to specify the exact path of the downloaded files in the code.
+
+Usage:
+The user has to first download the two files provided here.
+
 
