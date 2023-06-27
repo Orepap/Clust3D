@@ -11,5 +11,5 @@ from TMDC.main import TMDC
 data_file = "..." # path to the data file
 correlation_file = "..." # path to the correlation file
 
-clusters, neurons, cl_labels = MDC(data_file=data_file, correlation_file=correlation_file, n_neurons=-1, distance="euclidean", imputation="none", pca="elbow", verbose=2)
+clusters, neurons, cl_labels = MDC(data_file=data_file, correlation_file=correlation_file, n_neurons=-1)
 ```  
