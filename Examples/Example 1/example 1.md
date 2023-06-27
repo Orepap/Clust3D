@@ -1,5 +1,5 @@
 The user has to first download the Series Matrix File from GEO (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE80060)  
-and follow the preprocessing steps explained in the readme.md files.  
+and follow the preprocessing steps explained in the readme.md file.  
 The correlation file is provided in Folder “Example 1”.  
 
 They correspond to the Gene Expression Omnibus (GEO) Series Matrix File for the GSE80060 series.  
