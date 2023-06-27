@@ -14,4 +14,4 @@ correlation_file = "..." # path to the correlation file
 clusters, neurons, cl_labels = MDC(data_file=data_file, correlation_file=correlation_file, n_neurons=-1)
 ```  
 
-The code returs a dictionary with the cluster memberships (clusters),  the clustering centers (neurons) and a list with clustering labels (cl_labels).
+The code returs a dictionary with the cluster memberships (clusters),  the clustering centers (neurons) and a list with the clustering labels (cl_labels).
