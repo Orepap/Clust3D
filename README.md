@@ -63,7 +63,7 @@ For the correlation file, the user needs to create a txt file in UTF-8 or ANSI f
 
 ![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/80b3de60-8e8e-481e-8466-0033ddc2d5b6)
 
-In this particular example, P1 is a patient (arbitrary label) and GSM1, GSM2 and GSM3 correspond to that patients’s samples at (e.g.) three time intervals. The following have to be true for the correlation file:
+In this particular example, P1 is a patient (arbitrary label) and GSM1, GSM2 and GSM3 correspond to that patients’s samples at (e.g.) three time intervals.The following have to be true for the correlation file:
 
 1) One space per word  
 2) No space at the end of each line  
