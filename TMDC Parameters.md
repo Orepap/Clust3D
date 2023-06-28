@@ -39,7 +39,18 @@ ______________________________________________________________________________
 *Advanced*  
 • With the “pca_auto” parameter value, the user can also manually select, if they so choose to, the no. of principal components, by changing the “2” in the source code (line ~83 in dim_red.py) with the desired number.  
 • The user can plot the PCA explained variance plot through the source code and obtain more visual information by setting the parameter “show_pca_plot” to True (line ~21 in dim_red.py).  
-• The user can modify each technique’s parameters as desired in the dim_red.py
+• The user can modify each technique’s parameters as desired in the dim_red.py  
+
+______________________________________________________________________________
+
+**preprocess**: Boolean. Dictates if TMDC will apply preprocessing steps to the fed data file. (Default: True)   
+
+	True:	TMDC applies the user specified preprocessing steps to the data file.
+ 	False:	The user has already provided a preprocessed data file and no preprocessing steps will take place inside TMDC.
+  
+*Tips*  
+Automated prepocessing by TMDC allows for fast and seemless integration of TDMC with GEO datasets.
+Allowing the user to use their own preprocessed data file, allows for more precise and targeted analysis.  
 
 ______________________________________________________________________________
 
