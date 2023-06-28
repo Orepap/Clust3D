@@ -1,6 +1,3 @@
-TMDC PARAMETERS
-
-
 # **Data preprocessing parameters**
 
 **imputation**: String. The method of imputating the missing values in the data file. (Default: “zeros”).
@@ -47,7 +44,7 @@ ______________________________________________________________________________
 ______________________________________________________________________________
 
 
-**Neural network training parameters**
+# **Neural network training parameters**
 
 ______________________________________________________________________________
 
