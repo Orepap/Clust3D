@@ -51,6 +51,8 @@ def TMDC(data_file,
     t0 = time.time()
     print()
 
+
+
     # Reads and converts the txt file into a Dataframe
     if data_file[-4:] == ".txt":
         try:
@@ -58,7 +60,7 @@ def TMDC(data_file,
             print("Data file loaded")
         except FileNotFoundError:
             print()
-            print("Enter a valid data file")
+            print("Please enter a valid data file")
             input("Press enter to close program")
             exit()
 
@@ -69,13 +71,14 @@ def TMDC(data_file,
             print("Csv file loaded")
         except FileNotFoundError:
             print()
-            print("Enter a valid data file")
+            print("Please enter a valid data file")
             input("Press enter to close program")
             exit()
 
 
 
     if preprocess:
+
         imputation = imputation
         from TMDC.imputation import impute
         df = impute(df, imputation)
@@ -93,7 +96,7 @@ def TMDC(data_file,
             print()
         except FileNotFoundError:
             print()
-            print("Enter a valid correlation file")
+            print("Please enter a valid correlation file")
             input("Press enter to close program")
             exit()
 
@@ -104,7 +107,7 @@ def TMDC(data_file,
             print()
         except FileNotFoundError:
             print()
-            print("Enter a valid correlation file")
+            print("Please enter a valid correlation file")
             input("Press enter to close program")
             exit()
 
@@ -136,10 +139,10 @@ def TMDC(data_file,
 
 
 
-
     if t1 == 1 and t2 == 1:
         t1 = int(epochs / 2)
         t2 = int(epochs)
+
 
 
     if preprocess:

@@ -1,4 +1,4 @@
-def inputs(input_data, neighbors, n_neurons, epochs, lr, t1, t2, depth, max_n_neurons, dim_red, neuron_init, verbose):
+def inputs(input_data, neighbors, n_neurons, epochs, lr, t1, t2, depth, max_n_neurons, dim_red, neuron_init):
 
 
     # Input data for MDC
@@ -49,12 +49,6 @@ def inputs(input_data, neighbors, n_neurons, epochs, lr, t1, t2, depth, max_n_ne
     neuron_init = neuron_init
     if neuron_init != "random" and neuron_init != "points":
         print("ERROR: Enter 'random' or 'points' for the 'neuron_init' parameter value")
-        exit()
-
-
-    verbose = verbose
-    if verbose != 0 and verbose != 1 and verbose != 2:
-        print("ERROR: Enter 0, 1 or 2 for the 'verbose' parameter value")
         exit()
 
 
