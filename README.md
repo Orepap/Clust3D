@@ -80,3 +80,8 @@ The Euclidean distance is first computed between an input sample and all the neu
 The selected norm is the Frobenius norm:  
 ![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/2de1dec0-3b0c-46e7-88fa-b8a4dc960f15)
  
+# ADVANCED
+The  user can copy and paste the .py files included in the "Code" folder in a directory and change/experiment with different parameters.  
+  
+# STANDALONE TRAINING
+The user can feed their own preprocessed data file in order to be trained by TMDC. This is feasible by changing the "preprocess" parameter to False, while providing the preprocessed data file and the correlation file.
