@@ -138,4 +138,5 @@ ______________________________________________________________________________
 **random_state**: Positive integer (<=10000). Determines the random state of the algorithm. Choosing a value eliminates the stochastic nature of the “points” neuron initialization and chooses the same combinations every time TMDC is run as a whole. (Default: a random value each time TMDC is run)
 
 ______________________________________________________________________________
-
+  
+**All of TMDC's parameters can be seen in the main.py file along with their default parameters**
