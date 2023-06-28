@@ -79,7 +79,9 @@ In this particular example, P1 is a patient (arbitrary label) and GSM1, GSM2 and
 The Euclidean distance is first computed between an input sample and all the neurons. Then, the neuron that has the smallest distance to the sample is declared as the best matching unit (BMU) and its weights along with its nearest neighbor neurons (self-organizing) are re-adjusted to closer mimic the input sample. The novelty is the introduction of matrix norms as distance concepts. Conventional distance metrics like the Euclidean, are typically calculated between vectors. In TMDC, where the data points are matrices, the distance between two data points is defined as the mathematical norm of the matrix of their differences. As such, TMDC introduces the capability to train the neural network given the input samples and the neurons as matrices and not just as vectors, containing both the temporal and the spatial information. Thus, the clustering can be implemented directly on the patients, given the different timepoints altogether. </p>
 
 The selected norm is the Frobenius norm:  
-![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/2de1dec0-3b0c-46e7-88fa-b8a4dc960f15)
+![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/2de1dec0-3b0c-46e7-88fa-b8a4dc960f15)  
+
+The file "Equation.docx" details all the equations used for the neural network training.  
  
 # ADVANCED
 The  user can copy and paste the .py files included in the "Code" folder in a directory and change/experiment with different parameters.  
