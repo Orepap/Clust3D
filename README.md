@@ -71,7 +71,7 @@ In this particular example, P1 is a patient (arbitrary label) and GSM1, GSM2 and
 4) No number as the first label letter
 
 # PARAMETERS
-The file "TMDC Parameters.docx" contains all the tunable parameters of TMDC.
+"TMDC Parameters.md" details all the tunable parameters of TMDC.
 
 # HOW IT WORKS
 <p align="justify">
