@@ -85,6 +85,7 @@ The file "Equation.docx" details all the equations used for the neural network t
 
 # STANDALONE TRAINING
 The user can feed their own preprocessed data file in order to be trained by TMDC. This is feasible by changing the "preprocess" parameter to False, while providing the preprocessed data file and the correlation file.  
+  
 **Caution**! TMDC transposes the data file by default in order to synergize with the correlation file. The data file fed by the user should contain the features as rows and the samples at the different time intevals as the columns (as is in a Series Matrix File from GEO).
  
 # ADVANCED
