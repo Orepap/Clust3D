@@ -2,7 +2,7 @@
 
 <p align="justify">
 TMDC is a novel method designed specifically for clustering timeseries autoinflammatory gene expression data. TMDC enables the clustering of patients based on their gene expression profiles at different time points. By grouping patients according to the similarity of their gene profile changes over time, TMDC 
-provides a robust foundation for exploratory analysis. Notably, to the best of our knowledge, there is currently no publicly available tool or clustering algorithm specifically tailored for the simultaneous clustering of SAID patients across multiple time points. TMDC fills this gap by employing a self-adjusting neural network approach to effectively cluster SAID patientswith time-related gene expressions. The distinguishing feature of TMDC lies in its capability for efficient multi-timepoint and multi-dimensional clustering. </p>
+provides a robust foundation for exploratory analysis. Notably, to the best of our knowledge, there is currently no publicly available tool or clustering algorithm specifically tailored for the simultaneous clustering of SAID patients across multiple time points. TMDC fills this gap by employing a self-adjusting neural network approach to effectively cluster SAID patientswith time-related gene expressions. The distinguishing feature of TMDC lies in its capability for efficient multi-timepoint and multi-dimensional clustering. Nevertheless, TMDC’s neural network training design makes it applicable for clustering complex data structures with temporal dimensions, other than gene expressions. </p>
 
  
 • Orestis D. Papagiannopoulos  
