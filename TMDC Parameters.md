@@ -135,14 +135,14 @@ ____________________________________________________________________________
 **t1**: Positive integer. Constant value, which controls the exponential decrease of the learning rate. (Default: =epochs / 2)
 
 *Tips*  
-A good practice is to solve the exp decrease function (equation 2 in “TMDC Equations”) for different t1 and i (current iteration) values and assess the value of the learning rate at that iteration.
+A good practice is to solve the exp decrease function (equation (2) in “Equations.docx”) for different t1 and i (current iteration) values and assess the value of the learning rate at that iteration.
  
 ______________________________________________________________________________
 
 **t2**: Positive integer. Constant value, which controls the exponential decrease of the neighborhood function. (Default: =epochs)
 
 *Tips*  
-Higher t2 corresponds to higher and more lasting cooperation between neurons. Solving the neighborhood function (equation 3 in “TMDC Equations”) can give insight to the constant’s desired value.
+Higher t2 corresponds to higher and more lasting cooperation between neurons. Solving the neighborhood function (equation (3) in “Equations.docx”) can give insight to the constant’s desired value.
  
 ______________________________________________________________________________
 
