@@ -1,7 +1,7 @@
 TMDC PARAMETERS
 
 
-Data preprocessing parameters
+**Data preprocessing parameters**
 
 **imputation**: String. The method of imputating the missing values in the data file. (Default: “zeros”).
 
@@ -39,19 +39,11 @@ ______________________________________________________________________________
 
 
 *Advanced*  
-With the “pca_auto” parameter value, the user can also manually select, if they so choose to, the no. of principal components, by changing the “2” in the source code (line ~83 in dim_red.py) with the desired number.  
-The user can plot the PCA explained variance plot through the source code and obtain more visual information by setting the parameter “show_pca_plot” to True (line ~21 in dim_red.py).  
-The user can modify each technique’s parameters as desired in the dim_red.py
+*With the “pca_auto” parameter value, the user can also manually select, if they so choose to, the no. of principal components, by changing the “2” in the source code (line ~83 in dim_red.py) with the desired number.  
+*The user can plot the PCA explained variance plot through the source code and obtain more visual information by setting the parameter “show_pca_plot” to True (line ~21 in dim_red.py).  
+*The user can modify each technique’s parameters as desired in the dim_red.py
 
 ______________________________________________________________________________
-
-
-
-
-
-
-
-
 
 
 Neural network training parameters
