@@ -1,7 +1,7 @@
 TMDC PARAMETERS
 
 
-**Data preprocessing parameters**
+# **Data preprocessing parameters**
 
 **imputation**: String. The method of imputating the missing values in the data file. (Default: “zeros”).
 
