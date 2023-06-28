@@ -18,7 +18,7 @@ scaling: String. The method of scaling the values in the data file. (Default: �
 	“minmax”: 	Transform features by scaling each feature to a given range.
 	“standard”: 	Standardizes features by removing the mean and scaling to unit variance.
 
-Advanced:
+Advanced:  
 	The user can specify the range for the “minmax” scaling (Default: [0-1]) by specifying the range in the line ~143 in main.py.
 
 ______________________________________________________________________________
