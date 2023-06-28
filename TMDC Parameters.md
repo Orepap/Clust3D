@@ -49,8 +49,8 @@ ______________________________________________________________________________
  	False:	The user has already provided a preprocessed data file and no preprocessing steps will take place inside TMDC.
   
 *Tips*  
-Automated prepocessing by TMDC allows for fast and seemless integration of TDMC with GEO datasets.
-Allowing the user to use their own preprocessed data file, allows for more precise and targeted analysis.  
+• Automated prepocessing by TMDC allows for fast and seemless integration of TDMC with GEO datasets.  
+• Allowing the user to use their own preprocessed data file, allows for more precise and targeted analysis.  
 
 ______________________________________________________________________________
 
