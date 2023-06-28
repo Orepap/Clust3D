@@ -44,8 +44,8 @@ def get_number_of_neurons(nn, neuron_init, lr_0, MDC_data, neighbors, correlatio
         sse_list.append(sse)
 
     # SSE - no. of neurons plot
-    plt.plot(range(2, nn), sse_list)
-    plt.show()
+    # plt.plot(range(2, nn), sse_list)
+    # plt.show()
 
     scaler = MinMaxScaler(feature_range=(2, nn-1))
     a_scaled = scaler.fit_transform(np.array(sse_list).reshape(-1, 1))
