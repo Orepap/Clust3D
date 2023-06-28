@@ -121,9 +121,9 @@ ______________________________________________________________________________
 	“auto”:			It automatically selects and calculates every possible combination.
 
 *Tips*  
-• Very high values (> 500000) can result in very high running times. This depends on the user’s hardware and the number of neurons.
-• High values of this parameter while also using n_neurons = -1, can result in extremely high running times.
-• Higher values result in a higher chance that the algorithm will choose the optimal data points for neuron initialization (depending on the size of the dataset).
+• Very high values (> 500000) can result in very high running times. This depends on the user’s hardware and the number of neurons.  
+• High values of this parameter while also using n_neurons = -1, can result in extremely high running times.  
+• Higher values result in a higher chance that the algorithm will choose the optimal data points for neuron initialization (depending on the size of the dataset).  
 
 *Advanced*  
 • Being able to select and calculate the dispersion of every possible combination of data points, means the exact same initialization for every time TMDC is used.       This eliminates the stochastic nature of neuron initialization and results in better consistency.  
