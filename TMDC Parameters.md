@@ -118,7 +118,7 @@ ______________________________________________________________________________
 • Higher values result in a higher chance that the algorithm will choose the optimal data points for neuron initialization (depending on the size of the dataset).
 
 *Advanced*  
-• Being able to select and calculate the dispersion of every possible combination of data points, means the exact same initialization for every time TMDC is used.       This eliminates the stochastic nature of neuron initialization and results in better consistency.
+• Being able to select and calculate the dispersion of every possible combination of data points, means the exact same initialization for every time TMDC is used.       This eliminates the stochastic nature of neuron initialization and results in better consistency.  
 • The number of possible combinations without repetitions of a given dataset with s samples and n number of neurons is (_0^s)C_n   =  s!/((s-n)! n!).  
   For a given dataset, if this number does not exceed the computational threshold, depending on the hardware (e.g., 500000), it is advised to use the “auto” parameter   value for the best consistency.
 
