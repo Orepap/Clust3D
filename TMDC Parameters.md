@@ -28,19 +28,19 @@ ______________________________________________________________________________
 dim_red: String. The options to apply or not, a dimensionality reduction technique on the data before it is fed into TMDC’s training. (Default: “pca_auto”)
 
 	“pca_auto”:	Use of Principal Component Analysis (PCA) with 2 principal components.
-“pca_elbow”:	TMDC automatically chooses the optimal no. of principal components based on the elbow rule on the normalized PCA explained variance plot. The selection is made based on the elbow point of 45 degrees to the x axis.
-“t-sne”:	Use of the t-distributed Stochastic Neighbor Embedding (t-SNE).
-“umap”: 	Use of  the Uniform Manifold Approximation and Projection (UMAP).
-“ica”: 	Use of  the Independent Component Analysis (ICA).
-	“none”: 	No dimensionality reduction.
+	“pca_elbow”:	TMDC automatically chooses the optimal no. of principal components based on the elbow rule on the normalized PCA explained variance plot. The 			selection is made based on the elbow point of 45 degrees to the x axis.
+	“t-sne”:	Use of the t-distributed Stochastic Neighbor Embedding (t-SNE).
+	“umap”: 	Use of  the Uniform Manifold Approximation and Projection (UMAP).
+	“ica”: 		Use of  the Independent Component Analysis (ICA).
+	“none”: 	No dimensionality reduction.  
 
-Tips
-	Applying dimensionality reduction hugely improves training time.
+Tips  
+	Applying dimensionality reduction hugely improves training time.  
 
 
-Advanced
-	With the “pca_auto” parameter value, the user can also manually select, if they so choose to, the no. of principal components, by changing the “2” in the source code (line ~83 in dim_red.py) with the desired number.
-	The user can plot the PCA explained variance plot through the source code and obtain more visual information by setting the parameter “show_pca_plot” to True (line ~21 in dim_red.py).
+Advanced  
+	With the “pca_auto” parameter value, the user can also manually select, if they so choose to, the no. of principal components, by changing the “2” in the 	source code (line ~83 in dim_red.py) with the desired number.  
+	The user can plot the PCA explained variance plot through the source code and obtain more visual information by setting the parameter “show_pca_plot” to True 	(line ~21 in dim_red.py).  
 	The user can modify each technique’s parameters as desired in the dim_red.py
 
 ______________________________________________________________________________
