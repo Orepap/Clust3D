@@ -61,6 +61,7 @@ For the data file, the user needs to:
 •	Save the file and exit  
 
 ![sdvfrb](https://github.com/Orepap/TMDC/assets/93657525/fb7bb192-d8b0-4241-b48c-2976556c9f48)
+Snapshot example of a data file.  
 
 
 For the correlation file, the user needs to create a txt file in UTF-8 or ANSI format, like the example below:
