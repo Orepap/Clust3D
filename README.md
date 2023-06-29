@@ -82,13 +82,19 @@ The selected norm is the Frobenius norm:
 ![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/2de1dec0-3b0c-46e7-88fa-b8a4dc960f15)  
 
 The file "Equation.docx" details all the equations used for the neural network training.  
-
-# STANDALONE TRAINING
-The user can feed their own preprocessed data file in order to be trained by TMDC. This is feasible by changing the "preprocess" parameter to False, while providing the preprocessed data file and the correlation file.  
-  
-**Caution**! TMDC transposes the data file by default in order to synergize with the correlation file. The data file fed by the user should contain the features as rows and the samples at the different time intevals as the columns (as is in a Series Matrix File from GEO).
  
 # ADVANCED
+The user can input their own preprocessed data file to be trained by TMDC, by setting the preprocessing parameters to "none".  
+```python
+from TMDC.main import TMDC
+
+data_file = "..." # path to the data file
+correlation_file = "..." # path to the correlation file
+n_neurons = # Specify the number of neurons
+
+clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correlation_file, n_neurons=n_neurons, dim_reg="none", imputation="none", scaling="none")
+```
+
 The  user can copy and paste the .py files included in the "Code" folder in a directory and change/experiment with different parameters.  
   
 
