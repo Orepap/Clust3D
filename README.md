@@ -60,7 +60,8 @@ For the data file, the user needs to:
 •	Delete the very last line “!series_matrix_table_end”  
 •	Save the file and exit  
 
-![sdvfrb](https://github.com/Orepap/TMDC/assets/93657525/c13ff01d-c7e8-4a2a-bba0-0f6e0c8b64e4)
+![sdvfrb](https://github.com/Orepap/TMDC/assets/93657525/fb7bb192-d8b0-4241-b48c-2976556c9f48)
+
 
 For the correlation file, the user needs to create a txt file in UTF-8 or ANSI format, like the example below:
 
