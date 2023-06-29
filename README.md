@@ -94,7 +94,7 @@ n_neurons = # Specify the number of neurons
 
 clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correlation_file, n_neurons=n_neurons, dim_reg="none", imputation="none", scaling="none")
 ```
-
+**Caution!** The data file should be in the same format as a GEO Series Matrix File (features as rows, samples as columns).  
 The  user can copy and paste the .py files included in the "Code" folder in a directory and change/experiment with different parameters.  
   
 
