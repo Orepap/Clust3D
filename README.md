@@ -20,7 +20,6 @@ Contact: *orepap@uoi.gr*
 
 # INSTALL
 
-Run the following command in the terminal  
 _pip install git+https://github.com/Orepap/TMDC.git_
 
 
