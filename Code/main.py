@@ -40,8 +40,7 @@ def TMDC(data_file,
         t1=1,
         t2=1,
         random_state=random.randint(1, 10000),
-        depth=10000,
-        preprocess=True):
+        depth=10000):
 
 
     # Random state
@@ -75,10 +74,10 @@ def TMDC(data_file,
 
 
 
-    if preprocess:
-        imputation = imputation
-        from TMDC.imputation import impute
-        df = impute(df, imputation)
+
+    imputation = imputation
+    from TMDC.imputation import impute
+    df = impute(df, imputation)
 
 
 
@@ -142,31 +141,31 @@ def TMDC(data_file,
         t2 = int(epochs)
 
 
-    if preprocess:
 
-        from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+    from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+    scaling = scaling
+    if scaling == "minmax":
+        scaler = MinMaxScaler()
+    elif scaling == "stadard":
+        scaler = StandardScaler()
+    elif scaling == "none":
+        pass
+    else:
+        print("ERROR: Enter 'minmax', 'stadard' or 'none' for the 'scaling' parameter value")
+        exit()
+
+    if scaling != "none":
         data = np.array(data).reshape(data.shape[0] * data.shape[1], data.shape[2])
-
-        scaling = scaling
-        if scaling == "minmax":
-            scaler = MinMaxScaler()
-        elif scaling == "stadard":
-            scaler = StandardScaler()
-        else:
-            print("ERROR: Enter 'minmax' or 'stadard' for the 'scaling' parameter value")
-            exit()
-
         data = scaler.fit_transform(data)
         data = np.array(data).reshape((len(correlation), len(correlation[0]) - 1, data.shape[1]))
-
-        dim_red = dim_red
-        from TMDC.dim_red import apply_dim_red
-        input_data, data_max, data_min = apply_dim_red(dim_red, data, correlation)
-
     else:
-        input_data = data
-        data_max = np.max(input_data)
-        data_min = np.min(input_data)
+        data = data
+
+    dim_red = dim_red
+    from TMDC.dim_red import apply_dim_red
+    input_data, data_max, data_min = apply_dim_red(dim_red, data, correlation)
 
 
 
@@ -225,6 +224,9 @@ def TMDC(data_file,
         from TMDC.training import train_MDC
         cl_labels, neurons, MDC_data, clusters_data, clusters = train_MDC(epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data, neighbors, std_mean_all, correlation, ord)
 
+
+    print(f"The neural network trained in {np.round(time.time() - t0, 0)} seconds")
+    print()
 
     return clusters, neurons, cl_labels
 
