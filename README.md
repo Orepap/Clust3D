@@ -49,10 +49,9 @@ Folder "Examples" provides three usage examples based on timeseries gene express
 
 
 # INPUT FILES
-<p align="justify">
 TMDC requires two files as input.  
 The first one is the data file (txt or csv) which contains a table with the features (rows) and all the samples of the different time intervals (columns).  
-The second one, is a UTF-8 or ANSI format txt file, in which the correlation between the class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals has to be specified. </p>
+The second one, is a UTF-8 or ANSI format txt file, in which the correlation between the class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals has to be specified.
 
 Specifically for Data Matrix Files from the Gene Expression Omnibus, the following steps are required in preparation of those two files.
 
