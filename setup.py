@@ -10,6 +10,6 @@ setup(
                       "numpy >= 1.21.6",
                       "pandas >= 1.4.0",
                       "matplotlib >= 3.5.1"],
-    description='Timeseries Multi-Dimensional Clustering of Gene Expression Data from Systemic Autoinflammatory Diseases'
+    description='Timeseries Multi-Dimensional Clustering of Gene Expression Data frm Systemic Autoinflammatory Diseases'
 )
 
