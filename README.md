@@ -56,10 +56,11 @@ Specifically for Data Matrix Files from the Gene Expression Omnibus, the followi
 
 For the data file, the user needs to:  
 •	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus  
-•	Delete everything from within the txt file up until (and) the line ”!series_matrix_table_begin”  
+•	Delete everything from within the txt file up until (and) the line ”!series_matrix_table_begin” 
 •	Delete the very last line “!series_matrix_table_end”  
 •	Save the file and exit  
 
+![sdvfrb](https://github.com/Orepap/TMDC/assets/93657525/c13ff01d-c7e8-4a2a-bba0-0f6e0c8b64e4)
 
 For the correlation file, the user needs to create a txt file in UTF-8 or ANSI format, like the example below:
 
