@@ -50,21 +50,23 @@ Folder "Examples" provides three usage examples based on timeseries gene express
 
 # INPUT FILES
 <p align="justify">
-TMDC requires two files as input. The first one is the data file (txt or csv) which contains a table with the features (rows) and all the samples of the different time intervals (columns). The second one, is a UTF-8 or ANSI format txt file, in which the correlation between the class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals has to be specified. </p>
+TMDC requires two files as input.  
+The first one is the data file (txt or csv) which contains a table with the features (rows) and all the samples of the different time intervals (columns).  
+The second one, is a UTF-8 or ANSI format txt file, in which the correlation between the class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals has to be specified. </p>
 
 Specifically for Data Matrix Files from the Gene Expression Omnibus, the following steps are required in preparation of those two files.
 
-For the data file, the user needs to:  
+For the **data file**, the user needs to:  
 •	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus  
 •	Delete everything from within the txt file up until (and) the line ”!series_matrix_table_begin” 
 •	Delete the very last line “!series_matrix_table_end”  
 •	Save the file and exit  
 
-![sdvfrb](https://github.com/Orepap/TMDC/assets/93657525/fb7bb192-d8b0-4241-b48c-2976556c9f48)
+![sdvfrb](https://github.com/Orepap/TMDC/assets/93657525/fb7bb192-d8b0-4241-b48c-2976556c9f48)  
 Snapshot example of a data file.  
 
 
-For the correlation file, the user needs to create a txt file in UTF-8 or ANSI format, like the example below:
+For the **correlation file**, the user needs to create a txt file in UTF-8 or ANSI format, like the example below:
 
 ![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/80b3de60-8e8e-481e-8466-0033ddc2d5b6)
 
