@@ -150,4 +150,4 @@ ______________________________________________________________________________
 
 ______________________________________________________________________________
   
-**All of TMDC's parameters can be seen in the main.py file along with their default parameters**
+**All of TMDC's parameters can be viewed in the main.py file along with their default parameters**
