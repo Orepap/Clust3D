@@ -163,9 +163,12 @@ def TMDC(data_file,
         data = data
 
     dim_red = dim_red
+    if dim_red != "pca_elbow" and dim_red != "none" and dim_red != "pca_auto" and dim_red != "t-sne" and dim_red != "ica":
+        print("ERROR: Refer to the parameters docx for the available dimensionality reduction options")
+        exit()
+
     from TMDC.dim_red import apply_dim_red
     input_data, data_max, data_min = apply_dim_red(dim_red, data, correlation)
-
 
 
     from TMDC.inputs import inputs
