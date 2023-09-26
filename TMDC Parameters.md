@@ -28,7 +28,6 @@ ______________________________________________________________________________
 	“pca_elbow”:	TMDC automatically chooses the optimal no. of principal components based on the elbow rule on the normalized PCA explained variance plot.  
  			The selection is made based on the elbow point of 45 degrees to the x axis.
 	“t-sne”:	Use of t-distributed Stochastic Neighbor Embedding (t-SNE).
-	“umap”: 	Use of Uniform Manifold Approximation and Projection (UMAP).
 	“ica”: 		Use of Independent Component Analysis (ICA).
 	“none”: 	No dimensionality reduction.  
 
