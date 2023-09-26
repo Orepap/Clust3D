@@ -42,7 +42,7 @@ n_neurons = # Specify the number of neurons
 clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correlation_file, n_neurons=n_neurons)
 ```
 The code returns a dictionary with the cluster memberships (clusters),    
-the clustering centers (neurons)  
+a numpy array of the clustering centers (neurons)  
 and a list with the clustering labels (cl_labels).  
 
 Folder "Examples" provides three usage examples based on timeseries gene expression data from systemic autoinflammatory diseases.
