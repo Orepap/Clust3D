@@ -102,6 +102,6 @@ clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correl
 **Caution!** The data file should be in the same format as a GEO Series Matrix File (features as rows, samples as columns).  
 .  
 .  
-The  user can copy and paste the .py files included in the "Code" folder in a directory and change/experiment with different parameters.  
+The user can change/experiment with different parameters on the source code found in the "TMDC" folder.  
   
 
