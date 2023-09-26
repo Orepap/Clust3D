@@ -4,7 +4,6 @@ setup(
     name='TMDC',
     version='1.0',
     packages=find_packages(),
-    authors=["Orestis D. Papagiannopoulos", "Vasileios Pezoulas ", "Costas Papaloukas ", "Dimitrios I. Fotiadis"],
     author_email="orepap@uoi.gr",
     install_requires=["scikit-learn >= 1.0.2",
                       "numpy >= 1.21.6",
