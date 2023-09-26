@@ -129,33 +129,6 @@ def apply_dim_red(dim_red, data, correlation):
         input_data = data_pca
 
 
-    # UMAP
-    elif dim_red == "umap":
-        import umap
-
-        data = np.array(data).reshape(data.shape[0] * data.shape[1], data.shape[2])
-        umap_model = umap.UMAP()
-
-        # Fit the UMAP model to the data
-        umap_results = umap_model.fit_transform(data)
-
-
-        kk_max = []
-        kk_min = []
-        for kk in umap_results:
-
-            kk_min.append(np.min(kk))
-            kk_max.append(np.max(kk))
-
-        data_min = np.min(kk_min)
-        data_max = np.min(kk_max)
-
-        data_pca = np.array(umap_results).reshape((len(correlation), len(correlation[0]) - 1, umap_results.shape[1]))
-
-        input_data = data_pca
-
-
-
 
     # ICA
     elif dim_red == "ica":
