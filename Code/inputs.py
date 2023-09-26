@@ -41,7 +41,7 @@ def inputs(input_data, neighbors, n_neurons, epochs, lr, t1, t2, depth, max_n_ne
 
 
     dim_red = dim_red
-    if dim_red != "pca_elbow" and dim_red != "none" and dim_red != "pca_auto" and dim_red != "t-sne" and dim_red != "umap" and dim_red != "ica":
+    if dim_red != "pca_elbow" and dim_red != "none" and dim_red != "pca_auto" and dim_red != "t-sne" and dim_red != "ica":
         print("ERROR: Refer to the parameters docx for the available dimensionality reduction options")
         exit()
 

@@ -80,7 +80,8 @@ def apply_dim_red(dim_red, data, correlation):
         input_data = data
 
 
-    
+
+    # PCA using default PCA parameters (All components are kept)
     elif dim_red == "pca_auto":
 
         data = np.array(data).reshape(data.shape[0] * data.shape[1], data.shape[2])

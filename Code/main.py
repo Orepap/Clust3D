@@ -18,7 +18,6 @@ GitHub                                  :    https://github.com/Orepap/TMDC
 """
 
 
-
 import random
 import numpy as np
 import pandas as pd
