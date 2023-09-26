@@ -24,7 +24,7 @@ def train_MDC(epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data, neighbors, std
         # For every data point
         for matrix in MDC_data_copy_nparray:
 
-            # Euclidean distances between data point and neurons
+            # Distances between data point and neurons
             dists = [np.linalg.norm(matrix - neurons[i], ord=ord) for i in range(n_neurons)]
 
 
@@ -62,7 +62,7 @@ def train_MDC(epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data, neighbors, std
     cl_labels = []
     d = []
     for num, matrix in enumerate(MDC_data):
-        # Euclidean distances between data point and neurons
+        # Distances between data point and neurons
 
         ds = [np.linalg.norm(matrix - neurons[i], ord=ord) for i in range(n_neurons)]
 
