@@ -145,7 +145,7 @@ Higher t2 corresponds to higher and more lasting cooperation between neurons. So
  
 ______________________________________________________________________________
 
-**random_state**: Positive integer (<=10000). Determines the random state of the algorithm. Choosing a value eliminates the stochastic nature of the “points” neuron initialization and chooses the same combinations every time Clust3D is run as a whole. (Default: a random value each time TMDC is run)
+**random_state**: Positive integer (<=10000). Determines the random state of the algorithm. Choosing a value eliminates the stochastic nature of the “points” neuron initialization and chooses the same combinations every time Clust3D is run as a whole. (Default: a random value each time Clust3D is run)
 
 ______________________________________________________________________________
   
