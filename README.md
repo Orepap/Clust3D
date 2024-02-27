@@ -34,13 +34,13 @@ matplotlib 3.5.1
 
 # USAGE
 ```python
-from TMDC.main import TMDC
+from Clust3D.main import Clust3D
 
 data_file = "..." # path to the data file
 correlation_file = "..." # path to the correlation file
 n_neurons = # Specify the number of neurons
 
-clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correlation_file, n_neurons=n_neurons)
+clusters, neurons, cl_labels = Clust3D(data_file=data_file, correlation_file=correlation_file, n_neurons=n_neurons)
 ```
 The code returns a dictionary with the cluster memberships (clusters),    
 a numpy array of the clustering centers (neurons)  
@@ -62,13 +62,13 @@ For the **data file**, the user needs to:
 •	Delete the very last line “!series_matrix_table_end”  
 •	Save the file and exit  
 
-![sdvfrb](https://github.com/Orepap/TMDC/assets/93657525/fb7bb192-d8b0-4241-b48c-2976556c9f48)  
+![sdvfrb](https://github.com/Orepap/Clust3D/assets/93657525/fb7bb192-d8b0-4241-b48c-2976556c9f48)  
 Snapshot example of a data file.  
 
 
 For the **correlation file**, the user needs to create a txt file in UTF-8 or ANSI format, like the example below:
 
-![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/80b3de60-8e8e-481e-8466-0033ddc2d5b6)
+![εικόνα](https://github.com/Orepap/Clust3D/assets/93657525/80b3de60-8e8e-481e-8466-0033ddc2d5b6)
 
 In this particular example, P1 is a patient (arbitrary naming for the first class label) and GSM1, GSM2 and GSM3 correspond to that patients’s samples at (e.g.) three time intervals. The following have to be true for the correlation file:
 
@@ -92,13 +92,13 @@ The file "Equation.docx" details all the equations used for the neural network t
 # ADVANCED
 The user can input their own preprocessed data file to be trained by Clust3D, by setting the preprocessing parameters to "none".  
 ```python
-from TMDC.main import TMDC
+from Clust3D.main import Clust3D
 
 data_file = "..." # path to the data file
 correlation_file = "..." # path to the correlation file
 n_neurons = # Specify the number of neurons
 
-clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correlation_file, n_neurons=n_neurons, dim_red="none", imputation="none", scaling="none")
+clusters, neurons, cl_labels = Clust3D(data_file=data_file, correlation_file=correlation_file, n_neurons=n_neurons, dim_red="none", imputation="none", scaling="none")
 ```
 **Caution!** The data file should be in the same format as a GEO Series Matrix File (features as rows, samples as columns).  
 .  
