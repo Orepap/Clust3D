@@ -58,7 +58,7 @@ Specifically for Data Matrix Files from the Gene Expression Omnibus, the followi
 
 For the **data file**, the user needs to:  
 •	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus  
-•	Delete everything from within the txt file up until (and) the line ”!series_matrix_table_begin” 
+•	Delete everything from within the txt file up until (and) the line ”!series_matrix_table_begin”  
 •	Delete the very last line “!series_matrix_table_end”  
 •	Save the file and exit  
 
