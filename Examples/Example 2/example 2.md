@@ -6,12 +6,12 @@ GSE97075 provides gene expression data of hyperimmunoglobulin D syndrome (HIDS) 
 
 Usage:  
 ```python
-from TMDC.main import TMDC
+from Clust3D.main import Clust3D
 
 data_file = "..." # path to the data file
 correlation_file = "..." # path to the correlation file
 
-clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correlation_file, n_neurons=-1, max_n_neurons=5, depth="auto")
+clusters, neurons, cl_labels = Clust3D(data_file=data_file, correlation_file=correlation_file, n_neurons=-1, max_n_neurons=5, depth="auto")
 ```  
 
 The code returs a dictionary with the cluster memberships (clusters),  the clustering centers (neurons) and a list with the clustering labels (cl_labels).
