@@ -2,10 +2,9 @@
 
 <p align="justify">
 Clust3D is a novel clustering tool designed for clustering 3D data, such as timeseries. Clust3D employs a self-adjusting neural network.
-Clust3D provides the capability to directly cluster 3D data, exploiting the entire data structure, without the need for flattening or decomposition of one of the dimensions </p>
+Clust3D provides the capability to directly cluster 3D data, exploiting the entire data structure, without the need for flattening or decomposition of one of the dimensions. </p>
 
 
- 
 Authors:  
 
 • *Orestis D. Papagiannopoulos*  
