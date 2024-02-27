@@ -22,10 +22,10 @@ ______________________________________________________________________________
 
 
 
-**dim_red**: String. The options to apply or not, a dimensionality reduction technique on the data before it is fed into TMDC’s training. (Default: “pca_auto”)
+**dim_red**: String. The options to apply or not, a dimensionality reduction technique on the data before it is fed into Clust3D’s training. (Default: “pca_auto”)
 
 	“pca_auto”:	Use of Principal Component Analysis (PCA) with 2 principal components.
-	“pca_elbow”:	TMDC automatically chooses the optimal no. of principal components based on the elbow rule on the normalized PCA explained variance plot.  
+	“pca_elbow”:	Clust3D automatically chooses the optimal no. of principal components based on the elbow rule on the normalized PCA explained variance plot.  
  			The selection is made based on the elbow point of 45 degrees to the x axis.
 	“t-sne”:	Use of t-distributed Stochastic Neighbor Embedding (t-SNE).
 	“ica”: 		Use of Independent Component Analysis (ICA).
@@ -42,13 +42,13 @@ ______________________________________________________________________________
 
 ______________________________________________________________________________
 
-**preprocess**: Boolean. Dictates if TMDC will apply preprocessing steps to the fed data file. (Default: True)   
+**preprocess**: Boolean. Dictates if Clust3D will apply preprocessing steps to the fed data file. (Default: True)   
 
-	True:	TMDC applies the user specified preprocessing steps to the data file.
- 	False:	The user has already provided a preprocessed data file and no preprocessing steps will take place inside TMDC.
+	True:	Clust3D applies the user specified preprocessing steps to the data file.
+ 	False:	The user has already provided a preprocessed data file and no preprocessing steps will take place inside Clust3D.
   
 *Tips*  
-• Automated prepocessing by TMDC allows for fast and seemless integration of TDMC with GEO datasets.  
+• Automated prepocessing by Clust3D allows for fast and seemless integration of Clust3D with GEO datasets.  
 • Allowing the user to use their own preprocessed data file, allows for more precise and targeted analysis.  
 
 ______________________________________________________________________________
