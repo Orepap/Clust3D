@@ -107,14 +107,14 @@ ______________________________________________________________________________
 	“points”: 	Every neuron is initialized as a randomly selected existing data point.
 			No same data point can be selected for two neurons.
 
-By selecting “points”, TMDC randomly selects data points equal to the no. of neurons and calculates their average in-between Euclidean distance. The combination with the highest average distance is selected as the chosen data points to initialize the neurons. This way, TMDC initializes the neurons by trying to utilize the largest possible span in the time-related, high dimensionality space. The number of different combinations to be calculated is dictated by the “depth” parameter.
+By selecting “points”, Clust3D randomly selects data points equal to the no. of neurons and calculates their average in-between Euclidean distance. The combination with the highest average distance is selected as the chosen data points to initialize the neurons. This way, Clust3D initializes the neurons by trying to utilize the largest possible span in the time-related, high dimensionality space. The number of different combinations to be calculated is dictated by the “depth” parameter.
 
 *Tips*  
 Due to stochasticity, a good practice is to redo the training a couple of times for whichever neuron initialization technique.
 
 ______________________________________________________________________________
 
-**depth**: Positive integer. The number of different combinations for TMDC to calculate the distance dispersion in order to initialize the neurons. (Default: 10000)
+**depth**: Positive integer. The number of different combinations for Clust3D to calculate the distance dispersion in order to initialize the neurons. (Default: 10000)
 
 	Positive integer: 	The number of different combinations.
 	“auto”:			It automatically selects and calculates every possible combination.
@@ -125,8 +125,8 @@ ______________________________________________________________________________
 • Higher values result in a higher chance that the algorithm will choose the optimal data points for neuron initialization (depending on the size of the dataset).  
 
 *Advanced*  
-• Being able to select and calculate the dispersion of every possible combination of data points, means the exact same initialization for every time TMDC is used.       This eliminates the stochastic nature of neuron initialization and results in better consistency.  
-• The number of possible combinations without repetitions of a given dataset with s samples and n number of neurons is ![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/f7e34231-b978-4a6a-b937-48ce8207a6fd).  
+• Being able to select and calculate the dispersion of every possible combination of data points, means the exact same initialization for every time Clust3D is used.       This eliminates the stochastic nature of neuron initialization and results in better consistency.  
+• The number of possible combinations without repetitions of a given dataset with s samples and n number of neurons is ![εικόνα](https://github.com/Orepap/Clust3D/assets/93657525/f7e34231-b978-4a6a-b937-48ce8207a6fd).  
   For a given dataset, if this number does not exceed the computational threshold, depending on the hardware (e.g., 500000), it is advised to use the “auto” parameter   value for the best consistency.
 
 ____________________________________________________________________________
@@ -145,8 +145,8 @@ Higher t2 corresponds to higher and more lasting cooperation between neurons. So
  
 ______________________________________________________________________________
 
-**random_state**: Positive integer (<=10000). Determines the random state of the algorithm. Choosing a value eliminates the stochastic nature of the “points” neuron initialization and chooses the same combinations every time TMDC is run as a whole. (Default: a random value each time TMDC is run)
+**random_state**: Positive integer (<=10000). Determines the random state of the algorithm. Choosing a value eliminates the stochastic nature of the “points” neuron initialization and chooses the same combinations every time Clust3D is run as a whole. (Default: a random value each time TMDC is run)
 
 ______________________________________________________________________________
   
-**All of TMDC's parameters can be viewed in the main.py file along with their default values**
+**All of Clust3D's parameters can be viewed in the main.py file along with their default values**
