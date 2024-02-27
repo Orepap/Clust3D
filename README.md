@@ -21,7 +21,7 @@ Contact: *orepap@uoi.gr*
 
 # INSTALL
 
-_pip install git+https://github.com/Orepap/TMDC.git_
+_pip install git+https://github.com/Orepap/Clust3D.git_
 
 
 # PREREQUISITES
