@@ -50,7 +50,7 @@ Folder "Examples" provides three usage examples based on timeseries gene express
 
 
 # INPUT FILES
-TMDC requires two files as input.  
+Clust3D requires two files as input.  
 The first one is the data file (txt or csv) which contains a table with the features (rows) and all the samples of the different time intervals (columns).  
 The second one, is a UTF-8 or ANSI format txt file, in which the correlation between the class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals has to be specified.
 
@@ -78,11 +78,11 @@ In this particular example, P1 is a patient (arbitrary naming for the first clas
 4) No number as the first label letter
 
 # PARAMETERS
-"TMDC Parameters.md" details all the tunable parameters of TMDC.
+"Clust3D Parameters.md" details all the tunable parameters of Clust3D.
 
 # HOW IT WORKS
 <p align="justify">
-The Euclidean distance is first computed between an input sample and all the neurons. Then, the neuron that has the smallest distance to the sample is declared as the best matching unit (BMU) and its weights along with its nearest neighbor neurons (self-organizing) are re-adjusted to closer mimic the input sample. The novelty is the introduction of matrix norms as distance concepts. Conventional distance metrics like the Euclidean, are typically calculated between vectors. In TMDC, where the data points are matrices, the distance between two data points is defined as the mathematical norm of the matrix of their differences. As such, TMDC introduces the capability to train the neural network given the input samples and the neurons as matrices and not just as vectors, containing both the temporal and the spatial information. Thus, the clustering can be implemented directly on the patients, given the different timepoints altogether. </p>
+The Euclidean distance is first computed between an input sample and all the neurons. Then, the neuron that has the smallest distance to the sample is declared as the best matching unit (BMU) and its weights along with its nearest neighbor neurons (self-organizing) are re-adjusted to closer mimic the input sample. The novelty is the introduction of matrix norms as distance concepts. Conventional distance metrics like the Euclidean, are typically calculated between vectors. In Clust3D, where the data points are matrices, the distance between two data points is defined as the mathematical norm of the matrix of their differences. As such, Clust3D introduces the capability to train the neural network given the input samples and the neurons as matrices and not just as vectors, containing both the temporal and the spatial information. Thus, the clustering can be implemented directly on the patients, given the different timepoints altogether. </p>
 
 The selected norm is the Frobenius norm:  
 ![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/2de1dec0-3b0c-46e7-88fa-b8a4dc960f15)  
@@ -90,7 +90,7 @@ The selected norm is the Frobenius norm:
 The file "Equation.docx" details all the equations used for the neural network training.  
  
 # ADVANCED
-The user can input their own preprocessed data file to be trained by TMDC, by setting the preprocessing parameters to "none".  
+The user can input their own preprocessed data file to be trained by Clust3D, by setting the preprocessing parameters to "none".  
 ```python
 from TMDC.main import TMDC
 
@@ -103,6 +103,6 @@ clusters, neurons, cl_labels = TMDC(data_file=data_file, correlation_file=correl
 **Caution!** The data file should be in the same format as a GEO Series Matrix File (features as rows, samples as columns).  
 .  
 .  
-The user can change/experiment with different parameters on the source code found in the "TMDC" folder.  
+The user can change/experiment with different parameters on the source code found in the "Clust3D" folder.  
   
 
