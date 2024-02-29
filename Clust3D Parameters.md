@@ -61,7 +61,7 @@ ______________________________________________________________________________
 **distance**: String. The mathematical distance to be used for the distance calculations. (Default: “euclidean”).
 
 	“euclidean”: Use of the Euclidean distance.
-	“manhattan” Use of the Manhattan distance.
+	“manhattan”: Use of the Manhattan distance.
  
 ______________________________________________________________________________
 
