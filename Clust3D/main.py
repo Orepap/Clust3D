@@ -40,7 +40,7 @@ def Clust3D(data_file,
             t1=1,
             t2=1,
             random_state=random.randint(1, 10000),
-            depth=10000):
+            depth=100000):
 
 
     # Random state
