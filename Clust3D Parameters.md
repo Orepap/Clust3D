@@ -117,7 +117,7 @@ ______________________________________________________________________________
 **depth**: Positive integer. The number of different combinations for Clust3D to calculate the distance dispersion in order to initialize the neurons. (Default: 100000)
 
 	Positive integer: 	The number of different combinations.
-	“auto”:			It automatically selects and calculates every possible combination.
+	“auto”:			It automatically calculates every possible combination.
 
 *Tips*  
 • In case of high running times, reduce the default value.  
