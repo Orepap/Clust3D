@@ -10,7 +10,7 @@ from Clust3D.main import Clust3D
 data_file = "..." # path to the data file
 correlation_file = "..." # path to the correlation file
 
-clusters, neurons, cl_labels = Clust3D(data_file=data_file, correlation_file=correlation_file, n_neurons=-1)
+clusters, neurons, cl_labels = Clust3D(data_file=data_file, correlation_file=correlation_file, n_neurons=-1, depth="auto")
 
 ```  
 
