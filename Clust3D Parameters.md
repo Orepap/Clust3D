@@ -120,7 +120,7 @@ ______________________________________________________________________________
 	“auto”:			It automatically selects and calculates every possible combination.
 
 *Tips*  
-• In case of high running times, reduce the default value.
+• In case of high running times, reduce the default value.	 
 • Very high values (> 500000) can result in very high running times. This depends on the user’s hardware and the number of neurons.  
 • High values of this parameter while also using n_neurons = -1, can result in extremely high running times.  
 • Higher values result in a higher chance that the algorithm will choose the optimal data points for neuron initialization (depending on the size of the dataset).  
