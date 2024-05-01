@@ -22,7 +22,7 @@ ______________________________________________________________________________
 
 
 
-**dim_red**: String. The options to apply or not, a dimensionality reduction technique on the data before it is fed into Clust3D’s training. (Default: “pca_auto”)
+**dim_red**: String. The options to apply or not, a feature dimensionality reduction technique on the data before it is fed into Clust3D’s training. (Default: “pca_auto”)
 
 	“pca_auto”:	Use of Principal Component Analysis (PCA) with 2 principal components.
 	“pca_elbow”:	Clust3D automatically chooses the optimal no. of principal components based on the elbow rule on the normalized PCA explained variance plot.  
