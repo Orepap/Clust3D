@@ -118,7 +118,7 @@ Running Clust3D with default parameters is not always viable or the most robust 
 **Viability**: Example 2 in Examples folder requires a lower "max_n_neurons" value than the default due to sample size (see parameters)
 **Robustness**: Examples 2 and 3 is best used with the "depth" parameter set to "auto". This provides the best consistency (see parameters) 
 
-**Caution!** The standalone version is a beta version. The user should expect to encounter bugs and/or inconsistencies.
+**Caution!** The standalone version is a beta version. The user should expect to encounter minor bugs and/or inconsistencies.
 
 
 ![image](https://github.com/Orepap/Clust3D/assets/93657525/0d8fda6f-0dcb-4eb4-9758-5f6e51ffff4d)
