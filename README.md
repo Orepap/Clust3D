@@ -115,8 +115,8 @@ You can find a standalone version (.exe) of Clust3D [here](https://drive.google.
 The user has the ability to select to run Clust3D with all default parameters or tune each one.  
 Running Clust3D with default parameters is not always viable or the most robust approach.
 
-**Viability**: Example 2 in Examples folder requires a lower "max_n_neurons" value than the default due to sample size (see parameters section)
-**Robustness**: Examples 2 and 3 is best used with the "depth" parameter set to "auto". This provides the best consistency (see parameters section) 
+**Viability**: Example 2 in Examples folder requires a lower "max_n_neurons" value than the default due to sample size (see Clust3D Parameters.md)
+**Robustness**: Examples 2 and 3 is best used with the "depth" parameter set to "auto". This provides the best consistency (see Clust3D Parameters.md) 
 
 **Caution!** The standalone version is a beta version. The user should expect to encounter bugs and/or inconsistencies.
 
