@@ -19,6 +19,7 @@ Ioannina, Greece
 
 Contact: *orepap@uoi.gr*
 
+
 # INSTALL
 
 _pip install git+https://github.com/Orepap/Clust3D.git_
@@ -105,4 +106,20 @@ clusters, neurons, cl_labels = Clust3D(data_file=data_file, correlation_file=cor
 .  
 The user can change/experiment with different parameters on the source code found in the "Clust3D" folder.  
   
+
+
+# STANDALONE VERSION
+You can find a standalone version (.exe) of Clust3D here: [Link Text](https://drive.google.com/drive/folders/13GMeJf4_lBE9GbTf__8FlC8FEaXmFcO1)
+
+![image](https://github.com/Orepap/Clust3D/assets/93657525/0d8fda6f-0dcb-4eb4-9758-5f6e51ffff4d)
+
+
+
+
+
+
+
+
+
+
 
