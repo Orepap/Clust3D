@@ -16,3 +16,5 @@ clusters, neurons, cl_labels = Clust3D(data_file=data_file, correlation_file=cor
 
 The code returs a dictionary with the cluster memberships (clusters),  the clustering centers (neurons) and a list with the clustering labels (cl_labels).
 
+- The "max_n_neurons" parameter has been set to a number (5) lower than the default value (8) due to the "points" initiallization process not being able to produce more neurons than samples.
+- The "depth" parameter has been set to "auto" for best consistenty, as it is computationally viable due to the low sample size of this dataset
