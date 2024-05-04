@@ -88,7 +88,7 @@ ______________________________________________________________________________
 
 	-1: 				Automatic selection of the no. of neurons based on the elbow rule on the normalized Sum of Squared Errors (SSE) plot. 
  					The selection is made based on the elbow point of 45 degrees to the x axis. The number of neurons up to which the training will run 
-      					is determined by the “max_n_neurons” parameter.
+      				is determined by the “max_n_neurons” parameter.
 
 *Advanced*    
 The user can plot the SSE plot through the source code and obtain more visual information by setting the “show_sse_plot” to True (line ~47 in auto_neuron_number_selection.py).
