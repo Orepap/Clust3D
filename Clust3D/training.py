@@ -11,17 +11,14 @@ def train_Clust3D(epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data, neighbors,
 
     for j in range(epochs):
 
-        # Exponential decrease of the learning rate
         lr = lr_0 * np.exp(-j / t1)
 
-        # Shuffling the data
         MDC_data_copy = copy.copy(MDC_data)
         MDC_data_copy_list = list(MDC_data_copy)
         shuffle(MDC_data_copy_list)
         MDC_data_copy_nparray = np.array(MDC_data_copy_list)
 
 
-        # For every data point
         for matrix in MDC_data_copy_nparray:
 
             # Distances between data point and neurons
@@ -44,25 +41,21 @@ def train_Clust3D(epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data, neighbors,
                 for nn in range(n_neurons):
 
                     m = copy.copy(neurons[nn])
-                    # Neighborhood function
+
                     h = np.exp((-(np.linalg.norm(q - m, ord=ord) ** 2)) / (2 * (std_mean_all * np.exp(-j * np.log(std_mean_all) / t2)) ** 2))
 
-                    # Neuron weights update
                     neurons[nn] = m + lr * h * (matrix - q)
 
 
 
-    # Dictionary which will be filled with clusters and their labels
     clusters = dict([(str(i), []) for i in range(1, n_neurons + 1)])
 
     clusters_data = dict([(str(i), []) for i in range(1, n_neurons + 1)])
 
-    # Clustering
-    # For every data point
+
     cl_labels = []
     d = []
     for num, matrix in enumerate(MDC_data):
-        # Distances between data point and neurons
 
         ds = [np.linalg.norm(matrix - neurons[i], ord=ord) for i in range(n_neurons)]
 
@@ -70,7 +63,6 @@ def train_Clust3D(epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data, neighbors,
         k = np.argmin(ds)
         kk = k + 1
 
-        # Filling the dictionary with the information
         clusters[str(kk)].append(correlation[num][0])
 
         clusters_data[str(kk)].append(np.array(matrix))
