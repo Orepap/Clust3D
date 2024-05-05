@@ -21,23 +21,20 @@ def train_Clust3D(epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data, neighbors,
 
         for matrix in MDC_data_copy_nparray:
 
-            # Distances between data point and neurons
+
             dists = [np.linalg.norm(matrix - neurons[i], ord=ord) for i in range(n_neurons)]
 
-
-            # Finding the best matching unit (BMU)
             index = np.argmin(dists)
             q = copy.copy(neurons[index])
 
-            # No use of neighbors
+
             if not neighbors:
-                # BMU weights update
                 neurons[index] = q + lr * (matrix - q)
 
 
-            # Use of neighbors (SOM)
+
             if neighbors:
-                # For every neuron
+
                 for nn in range(n_neurons):
 
                     m = copy.copy(neurons[nn])
