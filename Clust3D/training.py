@@ -56,7 +56,6 @@ def train_Clust3D(epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data, neighbors,
 
         ds = [np.linalg.norm(matrix - neurons[i], ord=ord) for i in range(n_neurons)]
 
-        # Find neuron with the smallest distance for the data point to be assigned to
         k = np.argmin(ds)
         kk = k + 1
 
