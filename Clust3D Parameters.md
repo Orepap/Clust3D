@@ -42,17 +42,6 @@ ______________________________________________________________________________
 
 ______________________________________________________________________________
 
-**preprocess**: Boolean. Dictates if Clust3D will apply preprocessing steps to the fed data file. (Default: True)   
-
-	True:	Clust3D applies the user specified preprocessing steps to the data file.
- 	False:	The user has already provided a preprocessed data file and no preprocessing steps will take place inside Clust3D.
-  
-*Tips*  
-• Automated prepocessing by Clust3D allows for fast and seemless integration of Clust3D with GEO datasets.  
-• Allowing the user to use their own preprocessed data file, allows for more precise and targeted analysis.  
-
-______________________________________________________________________________
-
 
 # **Neural network training parameters**
 
