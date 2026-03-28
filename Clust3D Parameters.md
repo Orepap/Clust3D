@@ -148,6 +148,34 @@ Higher t2 corresponds to higher and more lasting cooperation between neurons. So
  
 ______________________________________________________________________________
 
+**nan_mask**: Boolean. Controls whether distance computations between sample
+matrices and neuron matrices use a masked Frobenius norm that excludes missing
+(NaN) entries. When set to True, only non-NaN overlapping elements between a
+sample and a neuron contribute to the distance computation. (Default: False)
+
+```
+True:    Masked Frobenius distance — distance computations are restricted
+         to non-NaN overlapping elements between each sample-neuron pair.
+         Allows omic layers with structured missingness to contribute to
+         cluster geometry without being confounded by missingness-driven
+         artifacts. Appropriate when the input data contain NaN values
+         that should be excluded rather than imputed.
+
+False:   Standard Frobenius distance — all elements contribute to distance
+         computations. NaN values must have been handled upstream via the
+         imputation parameter.
+```
+
+*Tips*  
+This parameter is designed for multi-omic settings where one or more omic
+layers have structured missingness (for example, mass spectrometry data with
+feature-level non-detections). Setting `nan_mask=True` enables the available
+measurements to shape cluster geometry while reducing sensitivity to
+missingness patterns. It should be used together with `imputation="none"` and
+`scaling="none"` when the user provides their own pre-normalised tensor.
+
+______________________________________________________________________________
+
 **random_state**: Positive integer (<=10000). Determines the random state of the algorithm. Choosing a value eliminates the stochastic nature of the “points” neuron initialization and chooses the same combinations every time Clust3D is run as a whole. (Default: a random value each time Clust3D is run)
 
 ______________________________________________________________________________
