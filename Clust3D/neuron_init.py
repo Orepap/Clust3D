@@ -3,8 +3,26 @@ import copy
 import itertools
 
 
-def neurons_initialization(neuron_init, correlation, MDC_data, n_neurons, data_min, data_max, depth, rng, ord):
+def _norm(a, b, ord=None, nan_mask=False):
+    """
+    Compute the distance between two arrays a and b.
 
+    If nan_mask=True, restricts the computation to non-NaN overlapping
+    elements (masked Frobenius norm). Returns np.inf if no valid overlap.
+    If nan_mask=False, uses the standard numpy norm.
+    """
+    if nan_mask:
+        mask = ~np.isnan(a) & ~np.isnan(b)
+        if not np.any(mask):
+            return np.inf
+        return np.linalg.norm((a - b)[mask], ord=ord)
+    else:
+        return float(np.linalg.norm(a - b, ord=ord))
+
+
+def neurons_initialization(neuron_init, correlation, MDC_data, n_neurons,
+                            data_min, data_max, depth, rng, ord,
+                            nan_mask=False):            # <-- NEW PARAMETER
 
     n_phases = len(correlation[0]) - 1
 
@@ -14,126 +32,75 @@ def neurons_initialization(neuron_init, correlation, MDC_data, n_neurons, data_m
         neurons = []
 
         for i in range(n_neurons):
-
             w = []
             for j in range(n_phases):
-
-                ww = rng.uniform(low=data_min, high=data_max, size=(np.array(data_copy).shape[2],))
-
+                ww = rng.uniform(low=data_min, high=data_max,
+                                 size=(np.array(data_copy).shape[2],))
                 w.append(ww)
-
             neurons.append(w)
 
-        neurons = np.array(neurons)
-
-        return neurons
-
-
+        return np.array(neurons)
 
     elif neuron_init == "points":
 
         if depth == "auto":
 
-            # Number of different combinations
-            # print(sum(1 for _ in itertools.combinations([g for g in range(len(MDC_data))], n_neurons)))
+            dict_neuron_choose = {
+                str(k): list(combo)
+                for k, combo in enumerate(
+                    itertools.combinations(range(len(MDC_data)), n_neurons)
+                )
+            }
 
-            dict_neuron_choose = {str(k): [] for k in range(sum(1 for _ in itertools.combinations([g for g in range(len(MDC_data))], n_neurons)))}
             all_ress = []
-
-            for n, combo in enumerate(itertools.combinations([g for g in range(len(MDC_data))], n_neurons)):
-                dict_neuron_choose[str(n)] = list(combo)
-
             for value in dict_neuron_choose.values():
-
                 data_copy = np.array(copy.copy(MDC_data))
-                neurons = [data_copy[r, :, :] for r in value]
-                neurons = np.array(neurons)
+                neurons   = np.array([data_copy[r] for r in value])
 
-                for nnn in neurons:
-                    di = [np.linalg.norm(nnn - nn, ord=ord) for nn in neurons if np.linalg.norm(nnn - nn, ord=ord) != 0]
-                    break
-
-                ress = np.mean(di)
-                all_ress.append(ress)
-
-            index_max = np.argmax(all_ress)
-            sorted_index_list = -np.sort(-np.array(dict_neuron_choose[str(index_max)]))
-
-            neurons = []
-            data_copy = np.array(copy.copy(MDC_data))
-            for ind in sorted_index_list:
-                w = data_copy[ind, :, :]
-                data_copy = np.delete(data_copy, ind, axis=0)
-
-                neurons.append(w)
-
-            neurons = np.array(neurons)
-
-            return neurons
-
-
+                di = [
+                    _norm(neurons[0], nn, ord=ord, nan_mask=nan_mask)
+                    for nn in neurons
+                    if _norm(neurons[0], nn, ord=ord, nan_mask=nan_mask) != 0
+                ]
+                all_ress.append(np.mean(di))
 
         else:
 
-            choose_times = depth
-
+            choose_times       = depth
             dict_neuron_choose = {str(k): [] for k in range(choose_times)}
-            all_ress = []
+            all_ress           = []
 
             for dd in range(choose_times):
-
                 data_copy = np.array(copy.copy(MDC_data))
-
-                fr = [g for g in range(len(MDC_data))]
-
-                neurons = []
+                fr        = list(range(len(MDC_data)))
+                neurons   = []
 
                 for i in range(n_neurons):
-
                     r = rng.choice(fr)
                     fr.remove(r)
-
-
                     dict_neuron_choose[str(dd)].append(r)
-
-                    w = data_copy[r, :, :]
-
-
-                    neurons.append(w)
+                    neurons.append(data_copy[r])
 
                 neurons = np.array(neurons)
+                di = [
+                    _norm(neurons[0], nn, ord=ord, nan_mask=nan_mask)
+                    for nn in neurons
+                    if _norm(neurons[0], nn, ord=ord, nan_mask=nan_mask) != 0
+                ]
+                all_ress.append(np.mean(di))
 
-                for nnn in neurons:
+        index_max        = np.argmax(all_ress)
+        sorted_index_list = -np.sort(-np.array(dict_neuron_choose[str(index_max)]))
 
-                    di = [np.linalg.norm(nnn - nn, ord=ord) for nn in neurons if np.linalg.norm(nnn - nn, ord=ord) != 0]
-                    break
+        neurons   = []
+        data_copy = np.array(copy.copy(MDC_data))
+        for ind in sorted_index_list:
+            w         = data_copy[ind, :, :]
+            data_copy = np.delete(data_copy, ind, axis=0)
+            neurons.append(w)
 
-                ress = np.mean(di)
-                all_ress.append(ress)
-
-            index_max = np.argmax(all_ress)
-
-            sorted_index_list = -np.sort(-np.array(dict_neuron_choose[str(index_max)]))
-
-
-            neurons = []
-
-            data_copy = np.array(copy.copy(MDC_data))
-
-
-            for ind in sorted_index_list:
-
-                w = data_copy[ind, :, :]
-                data_copy = np.delete(data_copy, ind, axis=0)
-
-                neurons.append(w)
-
-            neurons = np.array(neurons)
-
-            return neurons
+        return np.array(neurons)
 
     else:
         print("Enter 'random' or 'points' as the neuron_init parameter value")
         exit()
-
-
