@@ -30,13 +30,18 @@ _pip install git+https://github.com/Orepap/Clust3D.git_
 
 
 # PREREQUISITES
-```python
-Python >= 3.10
-numpy >= 1.26.4
-pandas >= 2.2.3
+```
+Python    >= 3.10
+numpy     >= 1.26.4
+pandas    >= 2.2.3
 scikit-learn >= 1.5.2
 matplotlib >= 3.10.0
-scipy >= 1.14.1
+scipy     >= 1.14.1
+```
+
+Optional (required only when using `dim_red` with NaN-containing data):
+```
+fancyimpute >= 0.7.0
 ```
 
 # USAGE
@@ -56,6 +61,29 @@ and a list with the clustering labels (cl_labels).
 Folder "Examples" provides three usage examples based on timeseries gene expression data from systemic autoinflammatory diseases.
 
 
+# USAGE WITH NaN MASKING
+
+For datasets containing missing values that should be excluded from distance
+computations rather than imputed, set `nan_mask=True`. This enables the masked
+Frobenius distance, which restricts distance computations to non-NaN
+overlapping entries between each sample-neuron pair.
+
+```python
+from Clust3D.main import Clust3D
+
+data_file        = "..." # path to the data file
+correlation_file = "..." # path to the correlation file
+n_neurons        = 2     # number of neurons/clusters
+
+clusters, neurons, cl_labels = Clust3D(
+    data_file=data_file,
+    correlation_file=correlation_file,
+    n_neurons=n_neurons,
+    nan_mask=True  # enable masked Frobenius distance for data with missing values
+)
+```
+
+
 # INPUT FILES
 Clust3D requires two files as input.  
 The first one is the data file (txt or csv) which contains a table with the features (rows) and all the samples of the different time intervals (columns).  
@@ -65,8 +93,8 @@ Specifically for Data Matrix Files from the Gene Expression Omnibus, the followi
 
 For the **data file**, the user needs to:  
 •	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus  
-•	Delete everything from within the txt file up until (and) the line ”!series_matrix_table_begin”  
-•	Delete the very last line “!series_matrix_table_end”  
+•	Delete everything from within the txt file up until (and) the line "!series_matrix_table_begin"  
+•	Delete the very last line "!series_matrix_table_end"  
 •	Save the file and exit  
 
 ![sdvfrb](https://github.com/Orepap/Clust3D/assets/93657525/fb7bb192-d8b0-4241-b48c-2976556c9f48)  
@@ -77,7 +105,7 @@ For the **correlation file**, the user needs to create a txt file in UTF-8 or AN
 
 ![εικόνα](https://github.com/Orepap/Clust3D/assets/93657525/80b3de60-8e8e-481e-8466-0033ddc2d5b6)
 
-In this particular example, P1 is a patient (arbitrary naming for the first class label) and GSM1, GSM2 and GSM3 correspond to that patients’s samples at (e.g.) three time intervals. The following have to be true for the correlation file:
+In this particular example, P1 is a patient (arbitrary naming for the first class label) and GSM1, GSM2 and GSM3 correspond to that patients's samples at (e.g.) three time intervals. The following have to be true for the correlation file:
 
 1) One space per word  
 2) No space at the end of each line  
@@ -111,7 +139,16 @@ clusters, neurons, cl_labels = Clust3D(data_file=data_file, correlation_file=cor
 .  
 .  
 The user can change/experiment with different parameters on the source code found in the "Clust3D" folder.  
-  
+
+
+# UPDATES
+
+**v1.1** — Added `nan_mask` parameter enabling masked Frobenius distance computation.
+When `nan_mask=True`, distance computations between sample matrices and neuron matrices
+are restricted to non-NaN overlapping entries, allowing omic layers with structured
+missingness to contribute to cluster geometry without being confounded by
+missingness-driven artifacts. This update is available in the Python package only
+and is not included in the standalone version.
 
 
 # STANDALONE VERSION  
@@ -124,18 +161,7 @@ Running Clust3D with default parameters is not always viable or the most robust 
 **Viability**: Example 2 in Examples folder requires a lower "max_n_neurons" value than the default due to sample size (see parameters)  
 **Robustness**: Examples 2 and 3 is best used with the "depth" parameter set to "auto". This provides the best consistency (see parameters) 
 
-**Caution!** The standalone version is a beta version. The user should expect to encounter minor bugs and/or inconsistencies.
+**Caution!** The standalone version is a beta version. The user should expect to encounter minor bugs and/or inconsistencies. The `nan_mask` parameter introduced in v1.1 is not available in the standalone version.
 
 
 ![image](https://github.com/Orepap/Clust3D/assets/93657525/0d8fda6f-0dcb-4eb4-9758-5f6e51ffff4d)
-
-
-
-
-
-
-
-
-
-
-
