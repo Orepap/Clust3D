@@ -31,10 +31,12 @@ _pip install git+https://github.com/Orepap/Clust3D.git_
 
 # PREREQUISITES
 ```python
-scikit-learn 1.0.2
-numpy 1.21.6
-pandas 1.4.0
-matplotlib 3.5.1
+Python >= 3.10
+numpy >= 1.26.4
+pandas >= 2.2.3
+scikit-learn >= 1.5.2
+matplotlib >= 3.10.0
+scipy >= 1.14.1
 ```
 
 # USAGE
