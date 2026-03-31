@@ -71,9 +71,9 @@ overlapping entries between each sample-neuron pair.
 ```python
 from Clust3D.main import Clust3D
 
-data_file        = "..." # path to the data file
+data_file = "..." # path to the data file
 correlation_file = "..." # path to the correlation file
-n_neurons        = # Specify the number of neurons
+n_neurons = # Specify the number of neurons
 
 clusters, neurons, cl_labels = Clust3D(
     data_file=data_file,
