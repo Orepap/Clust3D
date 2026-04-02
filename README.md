@@ -59,6 +59,7 @@ Folder "Examples" provides three usage examples based on timeseries gene express
 
 # UPDATES
 <p align="justify">
+ 
 **v1.1** — Added `scaling_per_dimension` parameter enabling independent per-dimension (layer) scaling.
 When `scaling_per_dimension=True`, a separate scaler is fitted and applied to each
 dimension (layer) independently, preserving the relative structure within each dimension (layer). This is
@@ -67,6 +68,7 @@ ranges or distributions. When `scaling_per_dimension=False` (default), all dimen
 are scaled jointly. This update is available in the Python package only and is not
 included in the standalone version.
 
+<p align="justify">
 **v1.1** — Added `nan_mask` parameter enabling masked Frobenius distance computation.
 When `nan_mask=True`, distance computations between sample matrices and neuron matrices
 are restricted to non-NaN overlapping entries, allowing layers with structured
@@ -108,6 +110,7 @@ The second one, is a UTF-8 or ANSI format txt file, in which the correlation bet
 
 Specifically for Data Matrix Files from the Gene Expression Omnibus, the following steps are required in preparation of those two files.
 
+<p align="justify">
 For the **data file**, the user needs to:  
 •	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus  
 •	Delete everything from within the txt file up until (and) the line "!series_matrix_table_begin"  
@@ -179,7 +182,7 @@ The user can change/experiment with different parameters on the source code foun
 
 
 # STANDALONE VERSION  
-  
+<p align="justify">
 You can find a standalone version (.exe) of Clust3D [here](https://drive.google.com/drive/folders/13GMeJf4_lBE9GbTf__8FlC8FEaXmFcO1).  
   
 The user has the ability to select to run Clust3D with all default parameters or tune each one.  
