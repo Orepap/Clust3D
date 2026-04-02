@@ -25,12 +25,12 @@ ______________________________________________________________________________
 **scaling_per_dimension**: Boolean. Controls whether scaling is applied independently per dimension or jointly across all layers. (Default: False)
 
 	True: 	Each dimension is scaled independently. A separate scaler is fitted and applied
-		to each dimension, preserving the relative structure within each dimension.
-		This is the recommended setting for multi-omic tensors where omic layers
-		have different value ranges or distributions.
+			to each dimension, preserving the relative structure within each dimension.
+			This is the recommended setting for multi-omic tensors where omic layers
+			have different value ranges or distributions.
 
 	False: 	All omic layers are scaled jointly after reshaping the tensor into a 2D matrix.
-		A single scaler is fitted across all layers combined.
+			A single scaler is fitted across all layers combined.
 
 *Tips*  
 When working with multi-omic data,
@@ -43,12 +43,12 @@ ______________________________________________________________________________
 
 **dim_red**: String. The options to apply or not a feature dimensionality reduction technique on the data before it is fed into Clust3D's training. (Default: "pca_auto")
 
-	"pca_auto":	Use of Principal Component Analysis (PCA) with 2 principal components.
+	"pca_auto":		Use of Principal Component Analysis (PCA) with 2 principal components.
 	"pca_elbow":	Clust3D automatically chooses the optimal no. of principal components based on the elbow rule on the normalized PCA explained variance plot.
- 			The selection is made based on the elbow point of 45 degrees to the x axis.
-	"t-sne":	Use of t-distributed Stochastic Neighbor Embedding (t-SNE).
-	"ica": 		Use of Independent Component Analysis (ICA).
-	"none": 	No dimensionality reduction.
+ 					The selection is made based on the elbow point of 45 degrees to the x axis.
+	"t-sne":		Use of t-distributed Stochastic Neighbor Embedding (t-SNE).
+	"ica": 			Use of Independent Component Analysis (ICA).
+	"none": 		No dimensionality reduction.
 
 *Tips*  
 	Applying dimensionality reduction greatly improves training time.
@@ -94,9 +94,9 @@ ______________________________________________________________________________
 
 	Positive (>=2) integer:  	User-specified number of neurons.
 
-	-1: 				Automatic selection of the no. of neurons based on the elbow rule on the normalized Sum of Squared Errors (SSE) plot.
- 					The selection is made based on the elbow point of 45 degrees to the x axis. The number of neurons up to which the training will run
-      					is determined by the "max_n_neurons" parameter.
+	-1: 						Automatic selection of the no. of neurons based on the elbow rule on the normalized Sum of Squared Errors (SSE) plot.
+ 								The selection is made based on the elbow point of 45 degrees to the x axis. The number of neurons up to which the training will run
+      							is determined by the "max_n_neurons" parameter.
 
 *Advanced*    
 The user can plot the SSE plot by setting `show_sse_plot` to True in `Clust3D/auto_neuron_number_selection.py`.
@@ -115,7 +115,7 @@ ______________________________________________________________________________
 	"random": 	The neuron weights are initialized randomly from a uniform distribution based on the min and max values in the fed data.
 
 	"points": 	Every neuron is initialized as a randomly selected existing data point.
-			No same data point can be selected for two neurons.
+				No same data point can be selected for two neurons.
 
 By selecting "points", Clust3D randomly selects data points equal to the no. of neurons and calculates their average in-between Euclidean distance. The combination with the highest average distance is selected as the chosen data points to initialize the neurons. This way, Clust3D initializes the neurons by trying to utilize the largest possible span in the high-dimensional multi-omic space. The number of different combinations to be calculated is dictated by the "depth" parameter.
 
@@ -127,7 +127,7 @@ ______________________________________________________________________________
 **depth**: Positive integer. The number of different combinations for Clust3D to calculate the distance dispersion in order to initialize the neurons. (Default: 100000)
 
 	Positive integer: 	The number of different combinations.
-	"auto":			Automatically calculates every possible combination.
+	"auto":				Automatically calculates every possible combination.
 
 *Tips*  
 • In case of high running times, reduce the default value.  
@@ -187,7 +187,7 @@ ______________________________________________________________________________
 
 **scaling**: String. The method of scaling the values in the data file. (Default: “minmax”).
 
-	“minmax”: 	Transform features by scaling each feature to a given range.
+	“minmax”: 		Transform features by scaling each feature to a given range.
 	“standard”: 	Standardizes features by removing the mean and scaling to unit variance.
 
 *Advanced*:  
@@ -199,12 +199,12 @@ ______________________________________________________________________________
 
 **dim_red**: String. The options to apply or not, a feature dimensionality reduction technique on the data before it is fed into Clust3D’s training. (Default: “pca_auto”)
 
-	“pca_auto”:	Use of Principal Component Analysis (PCA) with 2 principal components.
+	“pca_auto”:		Use of Principal Component Analysis (PCA) with 2 principal components.
 	“pca_elbow”:	Clust3D automatically chooses the optimal no. of principal components based on the elbow rule on the normalized PCA explained variance plot.  
- 			The selection is made based on the elbow point of 45 degrees to the x axis.
-	“t-sne”:	Use of t-distributed Stochastic Neighbor Embedding (t-SNE).
-	“ica”: 		Use of Independent Component Analysis (ICA).
-	“none”: 	No dimensionality reduction.  
+ 					The selection is made based on the elbow point of 45 degrees to the x axis.
+	“t-sne”:		Use of t-distributed Stochastic Neighbor Embedding (t-SNE).
+	“ica”: 			Use of Independent Component Analysis (ICA).
+	“none”: 		No dimensionality reduction.  
 
 *Tips*  
 	Applying dimensionality reduction hugely improves training time.  
@@ -250,9 +250,9 @@ ______________________________________________________________________________
 
 	Positive (>=2) integer:  	User specified number of neurons.
 
-	-1: 				Automatic selection of the no. of neurons based on the elbow rule on the normalized Sum of Squared Errors (SSE) plot. 
- 					The selection is made based on the elbow point of 45 degrees to the x axis. The number of neurons up to which the training will run 
-      				is determined by the “max_n_neurons” parameter.
+	-1: 						Automatic selection of the no. of neurons based on the elbow rule on the normalized Sum of Squared Errors (SSE) plot. 
+ 								The selection is made based on the elbow point of 45 degrees to the x axis. The number of neurons up to which the training will run 
+      							is determined by the “max_n_neurons” parameter.
 
 *Advanced*    
 The user can plot the SSE plot through the source code and obtain more visual information by setting the “show_sse_plot” to True (line ~47 in auto_neuron_number_selection.py).
@@ -271,7 +271,7 @@ ______________________________________________________________________________
 	“random”: 	The neuron weights are initialized randomly from a uniform distribution based on the min and max values in the fed data.
 
 	“points”: 	Every neuron is initialized as a randomly selected existing data point.
-			No same data point can be selected for two neurons.
+				No same data point can be selected for two neurons.
 
 By selecting “points”, Clust3D randomly selects data points equal to the no. of neurons and calculates their average in-between Euclidean distance. The combination with the highest average distance is selected as the chosen data points to initialize the neurons. This way, Clust3D initializes the neurons by trying to utilize the largest possible span in the time-related, high dimensionality space. The number of different combinations to be calculated is dictated by the “depth” parameter.
 
@@ -283,7 +283,7 @@ ______________________________________________________________________________
 **depth**: Positive integer. The number of different combinations for Clust3D to calculate the distance dispersion in order to initialize the neurons. (Default: 100000)
 
 	Positive integer: 	The number of different combinations.
-	“auto”:			It automatically calculates every possible combination.
+	“auto”:				It automatically calculates every possible combination.
 
 *Tips*  
 • In case of high running times, reduce the default value.  
