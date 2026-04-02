@@ -93,7 +93,9 @@ clusters, neurons, cl_labels = Clust3D(
     data_file=data_file,
     correlation_file=correlation_file,
     n_neurons=n_neurons,
-    nan_mask=True  # enable masked Frobenius distance for data with missing values
+    imputation="none",             # no imputation — missing values are handled by nan_mask
+    nan_mask=True,                 # enable masked Frobenius distance for data with missing values
+    scaling_per_dimension=True     # recommended when dimensions differ in dynamic range
 )
 ```
 
