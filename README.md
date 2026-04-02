@@ -116,6 +116,7 @@ In this particular example, P1 is a patient (arbitrary naming for the first clas
 
 # HOW IT WORKS
 <p align="justify">
+ 
 The Euclidean distance is first computed between an input sample and all the neurons. Then, the neuron that has the smallest distance to the sample is declared as the best matching unit (BMU) and its weights along with its nearest neighbor neurons (self-organizing) are re-adjusted to closer mimic the input sample. The novelty is the introduction of matrix norms as distance concepts. Conventional distance metrics like the Euclidean, are typically calculated between vectors. In Clust3D, where the data points are matrices, the distance between two data points is defined as the mathematical norm of the matrix of their differences. As such, Clust3D introduces the capability to train the neural network given the input samples and the neurons as matrices and not just as vectors, containing both the temporal and the spatial information. Thus, the clustering can be implemented directly on the patients, given the different timepoints altogether. </p>
 
 The selected norm is the Frobenius norm:  
@@ -126,6 +127,7 @@ The file "Equation.docx" details all the equations used for the neural network t
 # STOCHASTICITY
 
 <p align="justify">
+ 
 Clust3D involves stochasticity at two stages. First, during neuron initialization,
 when `neuron_init="points"` and `depth` is a finite integer, candidate data-point
 combinations are sampled randomly, meaning different runs may initialize neurons from
@@ -147,7 +149,9 @@ good practice to verify the stability of the resulting partition.**
 # ADVANCED
 
 <p align="justify">
+ 
 The user can input their own preprocessed data file to be trained by Clust3D, by setting the preprocessing parameters to "none".  
+
 ```python
 from Clust3D.main import Clust3D
 
@@ -166,6 +170,7 @@ The user can change/experiment with different parameters on the source code foun
 # STANDALONE VERSION  
 
 <p align="justify">
+ 
 You can find a standalone version (.exe) of Clust3D [here](https://drive.google.com/drive/folders/13GMeJf4_lBE9GbTf__8FlC8FEaXmFcO1).  
   
 The user has the ability to select to run Clust3D with all default parameters or tune each one.  
