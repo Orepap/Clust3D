@@ -23,7 +23,6 @@ import pandas as pd
 import time
 from Clust3D.neuron_init import neurons_initialization
 
-
 def Clust3D(data_file,
             correlation_file,
             n_neurons,
@@ -46,7 +45,7 @@ def Clust3D(data_file,
     nan_mask : bool, default False
         If True, the Frobenius distance between a sample matrix and a neuron
         matrix is computed only over non-missing (non-NaN) overlapping entries.
-        This allows layers with structured missingness to contribute to
+        This allows dimensions with structured missingness to contribute to
         cluster geometry without being confounded by missingness-driven
         artifacts. Set to True when the input data contain NaN values that
         should be excluded from distance computations rather than imputed.
@@ -151,8 +150,11 @@ def Clust3D(data_file,
 
         if scaling_per_dimension:
             for i in range(data.shape[1]):
-                scaler = scaler_class()
-                data[:, i, :] = scaler.fit_transform(data[:, i, :])
+                slice_ = data[:, i, :]
+                min_val = np.nanmin(slice_)
+                max_val = np.nanmax(slice_)
+                if max_val > min_val:
+                    data[:, i, :] = (slice_ - min_val) / (max_val - min_val)
         else:
             original_shape = data.shape
             data = data.reshape(data.shape[0] * data.shape[1], data.shape[2])
@@ -182,7 +184,7 @@ def Clust3D(data_file,
         from Clust3D.auto_neuron_number_selection import get_number_of_neurons
         best = get_number_of_neurons(
             max_n_neurons, neuron_init, lr_0, MDC_data, neighbors,
-            correlation, data_min, data_max, depth, rng, ord, nan_mask  # <-- pass nan_mask
+            correlation, data_min, data_max, depth, rng, ord, nan_mask
         )
         n_neurons = best
 
@@ -192,9 +194,10 @@ def Clust3D(data_file,
 
         neurons = neurons_initialization(
             neuron_init, correlation, MDC_data, n_neurons,
-            data_min, data_max, depth, rng, ord, nan_mask              # <-- pass nan_mask
+            data_min, data_max, depth, rng, ord, nan_mask
         )
 
+        # Correctly filter out both zero and inf distances
         std = []
         for neuron in neurons:
             std.append(np.mean([
@@ -208,7 +211,7 @@ def Clust3D(data_file,
         epochs = n_neurons * 1000
         cl_labels, neurons, MDC_data, clusters_data, clusters = train_Clust3D(
             epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data,
-            neighbors, std_mean_all, correlation, ord, nan_mask        # <-- pass nan_mask
+            neighbors, std_mean_all, correlation, ord, nan_mask
         )
 
     else:
@@ -218,9 +221,10 @@ def Clust3D(data_file,
 
         neurons = neurons_initialization(
             neuron_init, correlation, MDC_data, n_neurons,
-            data_min, data_max, depth, rng, ord, nan_mask              # <-- pass nan_mask
+            data_min, data_max, depth, rng, ord, nan_mask
         )
 
+        # Correctly filter out both zero and inf distances
         std = []
         for neuron in neurons:
             std.append(np.mean([
@@ -233,17 +237,13 @@ def Clust3D(data_file,
         from Clust3D.training import train_Clust3D
         cl_labels, neurons, MDC_data, clusters_data, clusters = train_Clust3D(
             epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data,
-            neighbors, std_mean_all, correlation, ord, nan_mask        # <-- pass nan_mask
+            neighbors, std_mean_all, correlation, ord, nan_mask
         )
 
     print(f"The neural network trained in {np.round(time.time() - t0, 0)} seconds")
     print()
     return clusters, neurons, cl_labels
 
-
-# ---------------------------------------------------------------------------
-# Shared distance helper
-# ---------------------------------------------------------------------------
 
 def _norm(a, b, ord=None, nan_mask=False):
     """
