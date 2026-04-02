@@ -160,8 +160,7 @@ This parameter is designed for multi-omic settings where one or more omic
 layers have structured missingness (for example, mass spectrometry data with
 feature-level non-detections). Setting `nan_mask=True` enables the available
 measurements to shape cluster geometry while reducing sensitivity to
-missingness patterns. It should be used together with `imputation="none"` and
-`scaling="none"` when the user provides their own pre-normalised tensor.
+missingness patterns.
 
 ______________________________________________________________________________
 
