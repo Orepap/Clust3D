@@ -19,6 +19,7 @@ GitHub                                  :    https://github.com/Orepap/Clust3D
 
 import time
 import random
+import warnings
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
@@ -127,15 +128,22 @@ def Clust3D(data_file,
     if scaling != "none":
         data = np.array(data, dtype=float)
 
+        if np.isnan(data).any():
+            print("NaN values detected in the data. Masked Frobenius distance will be used.")
+
         if scaling_per_dimension:
             for i in range(data.shape[1]):
                 scaler = scaler_class()
-                data[:, i, :] = scaler.fit_transform(data[:, i, :])
+                with warnings.catch_warnings():
+                    warnings.simplefilter("ignore")
+                    data[:, i, :] = scaler.fit_transform(data[:, i, :])
         else:
             original_shape = data.shape
             data = data.reshape(data.shape[0] * data.shape[1], data.shape[2])
             scaler = scaler_class()
-            data = scaler.fit_transform(data)
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                data = scaler.fit_transform(data)
             data = data.reshape(original_shape)
 
     # Dimensionality reduction
