@@ -68,30 +68,6 @@ ranges or distributions. When `scaling_per_dimension=False` (default), all dimen
 are scaled jointly. This update is available in the Python package only and is not
 included in the standalone version.
 
-# USAGE WITH NaN MASKING
-<p align="justify">
-For datasets containing missing values that should be excluded from distance
-computations rather than imputed, set `nan_mask=True`. This enables the masked
-Frobenius distance, which restricts distance computations to non-NaN
-overlapping entries between each sample-neuron pair.
-
-```python
-from Clust3D.main import Clust3D
-
-data_file = "..." # path to the data file
-correlation_file = "..." # path to the correlation file
-n_neurons = # Specify the number of neurons
-
-clusters, neurons, cl_labels = Clust3D(
-    data_file=data_file,
-    correlation_file=correlation_file,
-    n_neurons=n_neurons,
-    imputation="none",             # no imputation — missing values are handled by nan_mask
-    nan_mask=True,                 # enable masked Frobenius distance for data with missing values
-    scaling_per_dimension=True     # recommended when dimensions differ in dynamic range
-)
-```
-
 
 # INPUT FILES
 <p align="justify">
