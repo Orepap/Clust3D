@@ -1,4 +1,4 @@
-# Clust3D - 3D Clustering tool (UPDATING - DO NOT CLONE)
+# Clust3D - 3D Clustering tool
 
 <p align="justify">
 Clust3D is a clustering tool designed for clustering 3D data, such as timeseries and multi-omic datasets, using a self-adjusting neural network.
@@ -37,6 +37,10 @@ pandas    >= 2.2.3
 scikit-learn >= 1.5.2
 matplotlib >= 3.10.0
 scipy     >= 1.14.1
+```
+
+Optional (required only when using `dim_red` with NaN-containing data):
+```
 fancyimpute >= 0.7.0
 ```
 
@@ -58,20 +62,22 @@ Folder "Examples" provides three usage examples based on timeseries gene express
 
 
 # UPDATES
-<p align="justify">
- 
+
 **v1.1** — Added `scaling_per_dimension` parameter enabling independent per-dimension (layer) scaling.
 When `scaling_per_dimension=True`, a separate scaler is fitted and applied to each
 dimension (layer) independently, preserving the relative structure within each dimension (layer). This is
 the recommended setting when the dimensions of the input tensor have different value
 ranges or distributions. When `scaling_per_dimension=False` (default), all dimensions (layers)
-are scaled jointly. This update is available in the Python package only and is not
-included in the standalone version.
+are scaled jointly. In addition, all distance computations now use a masked Frobenius norm
+that operates only over non-missing (non-NaN) overlapping entries between each sample-neuron
+pair, allowing dimensions with structured missingness to contribute to cluster geometry
+without being confounded by missingness-driven artifacts. Both updates are available in
+the Python package only and are not included in the standalone version.
 
 
 # INPUT FILES
+
 <p align="justify">
- 
 Clust3D requires two files as input.  
 
 <p align="justify">
@@ -81,7 +87,7 @@ The second one, is a UTF-8 or ANSI format txt file, in which the correlation bet
 Specifically for Data Matrix Files from the Gene Expression Omnibus, the following steps are required in preparation of those two files.
 
 <p align="justify">
- 
+
 For the **data file**, the user needs to:  
 •	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus  
 •	Delete everything from within the txt file up until (and) the line "!series_matrix_table_begin"  
@@ -116,6 +122,7 @@ The selected norm is the Frobenius norm:
 The file "Equation.docx" details all the equations used for the neural network training.  
 
 # STOCHASTICITY
+
 <p align="justify">
 Clust3D involves stochasticity at two stages. First, during neuron initialization,
 when `neuron_init="points"` and `depth` is a finite integer, candidate data-point
@@ -129,16 +136,15 @@ built-in random module, which is independent of `random_state`. This is intentio
 randomizing sample presentation order is a well-established practice in neural network
 training that helps avoid local minima and improves convergence. Fully seeding this
 behaviour would require fixing Python's built-in random seed separately, which may
-interfere with convergence and is therefore not recommended. 
+interfere with convergence and is therefore not recommended.
 
- **As a result, repeated runs
-may still produce different clustering solutions. Repeating the training a
+**As a result, repeated runs may still produce different clustering solutions. Repeating the training a
 number of times and taking a consensus assignment across runs is always recommended as
-good practice to verify the stability of the resulting partition**.
+good practice to verify the stability of the resulting partition.**
 
 # ADVANCED
+
 <p align="justify">
- 
 The user can input their own preprocessed data file to be trained by Clust3D, by setting the preprocessing parameters to "none".  
 ```python
 from Clust3D.main import Clust3D
@@ -156,8 +162,8 @@ The user can change/experiment with different parameters on the source code foun
 
 
 # STANDALONE VERSION  
+
 <p align="justify">
- 
 You can find a standalone version (.exe) of Clust3D [here](https://drive.google.com/drive/folders/13GMeJf4_lBE9GbTf__8FlC8FEaXmFcO1).  
   
 The user has the ability to select to run Clust3D with all default parameters or tune each one.  
@@ -166,7 +172,7 @@ Running Clust3D with default parameters is not always viable or the most robust 
 **Viability**: Example 2 in Examples folder requires a lower "max_n_neurons" value than the default due to sample size (see parameters)  
 **Robustness**: Examples 2 and 3 is best used with the "depth" parameter set to "auto". This provides the best consistency (see parameters) 
 
-**Caution!** The standalone version is a beta version. The user should expect to encounter minor bugs and/or inconsistencies. The `scaling_per_dimension` parameter introduced in v1.1 are not available in the standalone version.
+**Caution!** The standalone version is a beta version. The user should expect to encounter minor bugs and/or inconsistencies. The `scaling_per_dimension` parameter introduced in v1.1 is not available in the standalone version.
 
 
 ![image](https://github.com/Orepap/Clust3D/assets/93657525/0d8fda6f-0dcb-4eb4-9758-5f6e51ffff4d)
