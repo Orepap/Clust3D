@@ -283,7 +283,7 @@ ______________________________________________________________________________
 *Tips*  
 Higher t2 corresponds to higher and more lasting cooperation between neurons. Solving the neighborhood function (equation (3) in “Equations.docx”) can give insight to the constant’s desired value.
  
-______________________________________________________________________________
+_______________________________________________________________
 
 **random_state**: Positive integer (<=10000). Determines the random state of the algorithm. Choosing a value eliminates the stochastic nature of the “points” neuron initialization and chooses the same combinations every time Clust3D is run as a whole. (Default: a random value each time Clust3D is run)
 
