@@ -55,7 +55,7 @@ ______________________________________________________________________________
 
 *Advanced*  
 • With the "pca_auto" parameter value, the user can also manually select the no. of principal components by changing the "2" in `Clust3D/dim_red.py`.  
-• The user can plot the PCA explained variance plot by setting the parameter `show_pca_plot` to True in `Clust3D/dim_red.py`.  
+• The user can plot the PCA explained variance plot by setting the parameter `show_plot` to True in `Clust3D/dim_red.py`.  
 • Each technique's parameters can be modified as desired in `Clust3D/dim_red.py`.
 
 ______________________________________________________________________________
