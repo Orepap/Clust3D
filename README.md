@@ -68,16 +68,6 @@ ranges or distributions. When `scaling_per_dimension=False` (default), all dimen
 are scaled jointly. This update is available in the Python package only and is not
 included in the standalone version.
 
-<p align="justify">
- 
-**v1.1** — Added `nan_mask` parameter enabling masked Frobenius distance computation.
-When `nan_mask=True`, distance computations between sample matrices and neuron matrices
-are restricted to non-NaN overlapping entries, allowing layers with structured
-missingness to contribute to cluster geometry without being confounded by
-missingness-driven artifacts. This update is available in the Python package only
-and is not included in the standalone version.
-
-
 # USAGE WITH NaN MASKING
 <p align="justify">
 For datasets containing missing values that should be excluded from distance
@@ -200,7 +190,7 @@ Running Clust3D with default parameters is not always viable or the most robust 
 **Viability**: Example 2 in Examples folder requires a lower "max_n_neurons" value than the default due to sample size (see parameters)  
 **Robustness**: Examples 2 and 3 is best used with the "depth" parameter set to "auto". This provides the best consistency (see parameters) 
 
-**Caution!** The standalone version is a beta version. The user should expect to encounter minor bugs and/or inconsistencies. The `nan_mask` and `scaling_per_dimension` parameters introduced in v1.1 are not available in the standalone version.
+**Caution!** The standalone version is a beta version. The user should expect to encounter minor bugs and/or inconsistencies. The `scaling_per_dimension` parameter introduced in v1.1 are not available in the standalone version.
 
 
 ![image](https://github.com/Orepap/Clust3D/assets/93657525/0d8fda6f-0dcb-4eb4-9758-5f6e51ffff4d)
