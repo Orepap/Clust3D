@@ -13,7 +13,7 @@ ______________________________________________________________________________
 **scaling**: String. The method of scaling the values in the data file. (Default: "minmax").
 
 	"minmax": 	Transform features by scaling each feature to a given range.
-	"standard": 	Standardize features by removing the mean and scaling to unit variance.
+	"standard": Standardize features by removing the mean and scaling to unit variance.
 	"none": 	No scaling is applied. Use when the data have been pre-normalized externally.
 
 *Advanced*:  
