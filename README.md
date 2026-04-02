@@ -163,10 +163,12 @@ built-in random module, which is independent of `random_state`. This is intentio
 randomizing sample presentation order is a well-established practice in neural network
 training that helps avoid local minima and improves convergence. Fully seeding this
 behaviour would require fixing Python's built-in random seed separately, which may
-interfere with convergence and is therefore not recommended. As a result, repeated runs
+interfere with convergence and is therefore not recommended. 
+
+ **As a result, repeated runs
 may still produce different clustering solutions. Repeating the training a
 number of times and taking a consensus assignment across runs is always recommended as
-good practice to verify the stability of the resulting partition.
+good practice to verify the stability of the resulting partition**.
 
 # ADVANCED
 <p align="justify">
