@@ -22,10 +22,10 @@ ______________________________________________________________________________
 ______________________________________________________________________________
 
 
-**scaling_per_dimension**: Boolean. Controls whether scaling is applied independently per omic layer (dimension) or jointly across all layers. (Default: False)
+**scaling_per_dimension**: Boolean. Controls whether scaling is applied independently per dimension or jointly across all layers. (Default: False)
 
-	True: 	Each omic layer is scaled independently. A separate scaler is fitted and applied
-		to each layer, preserving the relative structure within each omic modality.
+	True: 	Each dimension is scaled independently. A separate scaler is fitted and applied
+		to each dimension, preserving the relative structure within each dimension.
 		This is the recommended setting for multi-omic tensors where omic layers
 		have different value ranges or distributions.
 
@@ -161,7 +161,7 @@ False:   Standard Frobenius distance — all elements contribute to distance
 ```
 
 *Tips*  
-This parameter is designed for multi-omic settings where one or more omic
+This parameter is designed mostly for multi-omic settings where one or more omic
 layers have structured missingness (for example, mass spectrometry data with
 feature-level non-detections). Setting `nan_mask=True` enables the available
 measurements to shape cluster geometry while reducing sensitivity to
