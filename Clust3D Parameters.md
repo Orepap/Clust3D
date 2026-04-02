@@ -99,7 +99,7 @@ ______________________________________________________________________________
       							is determined by the "max_n_neurons" parameter.
 
 *Advanced*    
-The user can plot the SSE plot by setting `show_sse_plot` to True in `Clust3D/auto_neuron_number_selection.py`.
+The user can plot the SSE plot by uncommenting the plt plot in `Clust3D/auto_neuron_number_selection.py`.
 
 ______________________________________________________________________________
 
