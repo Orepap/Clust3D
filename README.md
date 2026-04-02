@@ -189,6 +189,7 @@ The user can change/experiment with different parameters on the source code foun
 
 # STANDALONE VERSION  
 <p align="justify">
+ 
 You can find a standalone version (.exe) of Clust3D [here](https://drive.google.com/drive/folders/13GMeJf4_lBE9GbTf__8FlC8FEaXmFcO1).  
   
 The user has the ability to select to run Clust3D with all default parameters or tune each one.  
