@@ -22,7 +22,7 @@ def _norm(a, b, ord=None, nan_mask=False):
 
 def neurons_initialization(neuron_init, correlation, MDC_data, n_neurons,
                             data_min, data_max, depth, rng, ord,
-                            nan_mask=False):            # <-- NEW PARAMETER
+                            nan_mask=False):
 
     n_phases = len(correlation[0]) - 1
 
@@ -60,7 +60,7 @@ def neurons_initialization(neuron_init, correlation, MDC_data, n_neurons,
                 di = [
                     _norm(neurons[0], nn, ord=ord, nan_mask=nan_mask)
                     for nn in neurons
-                    if _norm(neurons[0], nn, ord=ord, nan_mask=nan_mask) != 0
+                    if not np.array_equal(neurons[0], nn)
                 ]
                 all_ress.append(np.mean(di))
 
@@ -85,11 +85,11 @@ def neurons_initialization(neuron_init, correlation, MDC_data, n_neurons,
                 di = [
                     _norm(neurons[0], nn, ord=ord, nan_mask=nan_mask)
                     for nn in neurons
-                    if _norm(neurons[0], nn, ord=ord, nan_mask=nan_mask) != 0
+                    if not np.array_equal(neurons[0], nn)
                 ]
                 all_ress.append(np.mean(di))
 
-        index_max        = np.argmax(all_ress)
+        index_max         = np.argmax(all_ress)
         sorted_index_list = -np.sort(-np.array(dict_neuron_choose[str(index_max)]))
 
         neurons   = []
