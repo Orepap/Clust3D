@@ -2,7 +2,7 @@
 
 <p align="justify">
 Clust3D is a clustering tool designed for clustering 3D data, such as timeseries and multi-omic datasets, using a self-adjusting neural network.
-Clust3D provides the capability to directly cluster 3D data, exploiting the entire data structure, without the need for flattening or decomposition of one of the dimensions. </p>
+Clust3D provides the capability to directly cluster 3D data, exploiting the entire data structure, without the need for flattening or decomposition of one of the dimensions (layers). </p>
 
 
 **PAPER**:   
@@ -59,11 +59,11 @@ Folder "Examples" provides three usage examples based on timeseries gene express
 
 # UPDATES
 
-**v1.1** — Added `scaling_per_dimension` parameter enabling independent per-dimension scaling.
+**v1.1** — Added `scaling_per_dimension` parameter enabling independent per-dimension (layer) scaling.
 When `scaling_per_dimension=True`, a separate scaler is fitted and applied to each
-dimension independently, preserving the relative structure within each dimension. This is
+dimension (layer) independently, preserving the relative structure within each dimension (layer). This is
 the recommended setting when the dimensions of the input tensor have different value
-ranges or distributions. When `scaling_per_dimension=False` (default), all dimensions
+ranges or distributions. When `scaling_per_dimension=False` (default), all dimensions (layers)
 are scaled jointly. This update is available in the Python package only and is not
 included in the standalone version.
 
