@@ -23,6 +23,24 @@ import pandas as pd
 import time
 from Clust3D.neuron_init import neurons_initialization
 
+
+def _norm(a, b, ord=None, nan_mask=False):
+    """
+    Compute the distance between two arrays a and b.
+
+    If nan_mask=True, restricts the computation to non-NaN overlapping
+    elements (masked Frobenius norm). Returns np.inf if no valid overlap.
+    If nan_mask=False, uses the standard numpy norm.
+    """
+    if nan_mask:
+        mask = ~np.isnan(a) & ~np.isnan(b)
+        if not np.any(mask):
+            return np.inf
+        return np.linalg.norm((a - b)[mask], ord=ord)
+    else:
+        return float(np.linalg.norm(a - b, ord=ord))
+
+
 def Clust3D(data_file,
             correlation_file,
             n_neurons,
@@ -150,15 +168,18 @@ def Clust3D(data_file,
 
         if scaling_per_dimension:
             for i in range(data.shape[1]):
-                scaler = scaler_class()
-                data[:, i, :] = scaler.fit_transform(data[:, i, :])
+                slice_ = data[:, i, :]
+                min_val = np.nanmin(slice_)
+                max_val = np.nanmax(slice_)
+                if max_val > min_val:
+                    data[:, i, :] = (slice_ - min_val) / (max_val - min_val)
         else:
             original_shape = data.shape
             data = data.reshape(data.shape[0] * data.shape[1], data.shape[2])
             scaler = scaler_class()
             data = scaler.fit_transform(data)
             data = data.reshape(original_shape)
-                    
+
     if dim_red not in ["pca_elbow", "none", "pca_auto", "t-sne", "ica"]:
         print("ERROR: Refer to the parameters docx for the available dimensionality reduction options")
         exit()
@@ -240,20 +261,3 @@ def Clust3D(data_file,
     print(f"The neural network trained in {np.round(time.time() - t0, 0)} seconds")
     print()
     return clusters, neurons, cl_labels
-
-
-def _norm(a, b, ord=None, nan_mask=False):
-    """
-    Compute the distance between two arrays a and b.
-
-    If nan_mask=True, restricts the computation to non-NaN overlapping
-    elements (masked Frobenius norm). Returns np.inf if no valid overlap.
-    If nan_mask=False, uses the standard numpy norm.
-    """
-    if nan_mask:
-        mask = ~np.isnan(a) & ~np.isnan(b)
-        if not np.any(mask):
-            return np.inf
-        return np.linalg.norm((a - b)[mask], ord=ord)
-    else:
-        return float(np.linalg.norm(a - b, ord=ord))
