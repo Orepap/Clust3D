@@ -32,6 +32,7 @@ def Clust3D(data_file,
             max_n_neurons=8,
             dim_red="pca_auto",
             scaling="minmax",
+            scaling_per_dimension=False,
             neighbors=True,
             epochs=5000,
             lr=0.3,
@@ -40,7 +41,7 @@ def Clust3D(data_file,
             t2=1,
             random_state=random.randint(1, 10000),
             depth=100000,
-            nan_mask=False):           # <-- NEW PARAMETER
+            nan_mask=False):
     """
     nan_mask : bool, default False
         If True, the Frobenius distance between a sample matrix and a neuron
@@ -136,19 +137,28 @@ def Clust3D(data_file,
     # Scale input data
     from sklearn.preprocessing import MinMaxScaler, StandardScaler
     if scaling == "minmax":
-        scaler = MinMaxScaler()
+        scaler_class = MinMaxScaler
     elif scaling == "standard":
-        scaler = StandardScaler()
+        scaler_class = StandardScaler
     elif scaling == "none":
-        pass
+        scaler_class = None
     else:
         print("ERROR: Enter 'minmax', 'standard' or 'none' for the 'scaling' parameter value")
         exit()
 
     if scaling != "none":
-        data = np.array(data).reshape(data.shape[0] * data.shape[1], data.shape[2])
-        data = scaler.fit_transform(data)
-        data = np.array(data).reshape((len(correlation), len(correlation[0]) - 1, data.shape[1]))
+        data = np.array(data, dtype=float)
+
+        if scaling_per_dimension:
+            for i in range(data.shape[1]):
+                scaler = scaler_class()
+                data[:, i, :] = scaler.fit_transform(data[:, i, :])
+        else:
+            original_shape = data.shape
+            data = data.reshape(data.shape[0] * data.shape[1], data.shape[2])
+            scaler = scaler_class()
+            data = scaler.fit_transform(data)
+            data = data.reshape(original_shape)
 
     if dim_red not in ["pca_elbow", "none", "pca_auto", "t-sne", "ica"]:
         print("ERROR: Refer to the parameters docx for the available dimensionality reduction options")
