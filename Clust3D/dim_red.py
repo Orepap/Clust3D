@@ -1,170 +1,90 @@
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.decomposition import PCA
-from matplotlib import pyplot as plt
+from sklearn.decomposition import PCA, FastICA
 from sklearn.manifold import TSNE
-
+from matplotlib import pyplot as plt
+from fancyimpute import SoftImpute
 
 
 def apply_dim_red(dim_red, data, correlation):
+    """
+    Apply dimensionality reduction to the input tensor, supporting NaNs via SoftImpute.
 
-    # Automatic selection of the number of principal components based on the elbow rule
+    Parameters:
+        dim_red (str): Dimensionality reduction method ('none', 'pca_auto', 'pca_elbow', 't-sne', 'ica').
+        data (np.ndarray): Input data tensor of shape (N, M, F).
+        correlation (list): Correlation list used to restore 3D shape.
+
+    Returns:
+        tuple: (reduced_data, data_max, data_min)
+            - reduced_data: shape (N, M, d) with d = reduced dimension
+            - data_max / data_min: max/min values in the reduced tensor
+    """
+    data = np.array(data)
+    original_shape = data.shape  # (N, M, F)
+    flat_data = data.reshape(original_shape[0] * original_shape[1], original_shape[2])  # (N*M, F)
+
+    # --- Handle missing values if needed ---
+    if dim_red in ["pca_auto", "pca_elbow", "ica"] and np.isnan(flat_data).any():
+        print("Missing values detected → applying SoftImpute before PCA/ICA...")
+        flat_data = SoftImpute(max_iters=200, init_fill_method="zero", verbose=False).fit_transform(flat_data)
+
+    # === Apply dimensionality reduction ===
     if dim_red == "pca_elbow":
-
-        data = np.array(data).reshape(data.shape[0] * data.shape[1], data.shape[2])
-
         pca = PCA()
-        pca.fit_transform(data)
+        pca.fit(flat_data)
         list_pca = np.array(pca.explained_variance_ratio_)
 
-
+        # Optional elbow plot
         show_plot = False
         if show_plot:
-
-            # PCA explained variance plot
             plt.plot(range(len(list_pca)), list_pca)
+            plt.xlabel("Component")
+            plt.ylabel("Explained Variance Ratio")
+            plt.title("PCA Explained Variance")
             plt.show()
 
-
-        scaler = MinMaxScaler(feature_range=(0, len(list_pca)))
-        a_scaled = scaler.fit_transform(np.array(list_pca).reshape(-1, 1))
-        a_scaled = np.array(a_scaled).reshape(len(a_scaled), )
-
-        c = np.diff(a_scaled)
-        c = abs(np.array(c))
-
-        for n, value in enumerate(c):
+        # Elbow detection
+        scaled = MinMaxScaler(feature_range=(0, len(list_pca)))
+        a_scaled = scaled.fit_transform(list_pca.reshape(-1, 1)).flatten()
+        diffs = np.abs(np.diff(a_scaled))
+        pca_index = 2  # default fallback
+        for n, value in enumerate(diffs):
             if value <= 1:
                 pca_index = n
                 break
 
-        print(f"Optimal no. of principal components: {pca_index}")
-        print(f"Explained variance with {pca_index} principal components: {np.round(100 * np.sum(list_pca[:pca_index]), 2)}%")
-        print()
+        print(f"Optimal # of components: {pca_index}")
+        print(f"Explained variance: {np.round(100 * np.sum(list_pca[:pca_index]), 2)}%\n")
+
         pca = PCA(pca_index)
-        data_pca = pca.fit_transform(data)
+        data_pca = pca.fit_transform(flat_data)
 
-        data_pca = np.array(data_pca).reshape((len(correlation), len(correlation[0]) - 1, data_pca.shape[1]))
-
-
-        kk_max = []
-        kk_min = []
-        for kk in data_pca:
-
-            kk_min.append(np.min(kk))
-            kk_max.append(np.max(kk))
-
-        data_min = np.min(kk_min)
-        data_max = np.min(kk_max)
-
-        input_data = data_pca
-
-
-    # No pca
     elif dim_red == "none":
+        data_pca = flat_data
 
-        data = np.array(data).reshape(data.shape[0] * data.shape[1], data.shape[2])
-
-        kk_max = []
-        kk_min = []
-        for kk in data:
-
-            kk_min.append(np.min(kk))
-            kk_max.append(np.max(kk))
-
-        data_min = np.min(kk_min)
-        data_max = np.min(kk_max)
-
-        data = np.array(data).reshape((len(correlation), len(correlation[0]) - 1, data.shape[1]))
-
-        input_data = data
-
-
-
-    # PCA using default PCA parameters (All components are kept)
     elif dim_red == "pca_auto":
+        pca = PCA(n_components=2)
+        data_pca = pca.fit_transform(flat_data)
 
-        data = np.array(data).reshape(data.shape[0] * data.shape[1], data.shape[2])
-
-        pca = PCA(2)
-        data_pca = pca.fit_transform(data)
-        data_pca = np.array(data_pca).reshape((len(correlation), len(correlation[0]) - 1, data_pca.shape[1]))
-
-
-        kk_max = []
-        kk_min = []
-        for kk in data_pca:
-
-            kk_min.append(np.min(kk))
-            kk_max.append(np.max(kk))
-
-        data_min = np.min(kk_min)
-        data_max = np.min(kk_max)
-
-        input_data = data_pca
-
-
-
-
-
-    # t-SNE
     elif dim_red == "t-sne":
-
-        data = np.array(data).reshape(data.shape[0] * data.shape[1], data.shape[2])
-
         tsne = TSNE()
-        data_pca = tsne.fit_transform(data)
+        data_pca = tsne.fit_transform(flat_data)
 
-        kk_max = []
-        kk_min = []
-        for kk in data_pca:
-
-            kk_min.append(np.min(kk))
-            kk_max.append(np.max(kk))
-
-        data_min = np.min(kk_min)
-        data_max = np.min(kk_max)
-
-        data_pca = np.array(data_pca).reshape((len(correlation), len(correlation[0]) - 1, data_pca.shape[1]))
-
-        input_data = data_pca
-
-
-
-    # ICA
     elif dim_red == "ica":
-        from sklearn.decomposition import FastICA
-
-        data = np.array(data).reshape(data.shape[0] * data.shape[1], data.shape[2])
         ica = FastICA()
+        data_pca = ica.fit_transform(flat_data)
 
-        # Fit the ICA model to the mixed signal
-        ica.fit(data)
+    else:
+        raise ValueError(f"Unknown dimensionality reduction method: {dim_red}")
 
-        # Transform the mixed signal into its independent components
-        data_pca = ica.transform(data)
+    # === Reshape to original temporal structure ===
+    N = len(correlation)
+    M = len(correlation[0]) - 1
+    d = data_pca.shape[1]
+    data_pca = data_pca.reshape((N, M, d))
 
-        kk_max = []
-        kk_min = []
-        for kk in data_pca:
+    data_min = np.nanmin(data_pca)
+    data_max = np.nanmax(data_pca)
 
-            kk_min.append(np.min(kk))
-            kk_max.append(np.max(kk))
-
-        data_min = np.min(kk_min)
-        data_max = np.min(kk_max)
-
-        data_pca = np.array(data_pca).reshape((len(correlation), len(correlation[0]) - 1, data_pca.shape[1]))
-
-        input_data = data_pca
-
-
-
-
-    return input_data, data_max, data_min
-
-
-
-
-
-
+    return data_pca, data_max, data_min
