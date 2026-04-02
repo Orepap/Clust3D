@@ -139,7 +139,26 @@ The selected norm is the Frobenius norm:
 ![εικόνα](https://github.com/Orepap/TMDC/assets/93657525/2de1dec0-3b0c-46e7-88fa-b8a4dc960f15)  
 
 The file "Equation.docx" details all the equations used for the neural network training.  
- 
+
+# STOCHASTICITY
+
+Clust3D involves stochasticity at two stages. First, during neuron initialization,
+when `neuron_init="points"` and `depth` is a finite integer, candidate data-point
+combinations are sampled randomly, meaning different runs may initialize neurons from
+different starting points. This can be fully eliminated by setting `depth="auto"`, which
+exhaustively evaluates every possible combination and makes initialization deterministic.
+Setting `random_state` to a fixed integer also controls the initialization seed, though
+it does not affect the second source of stochasticity. During training, the order in
+which samples are presented to the network is shuffled at every epoch using Python's
+built-in random module, which is independent of `random_state`. This is intentional —
+randomizing sample presentation order is a well-established practice in neural network
+training that helps avoid local minima and improves convergence. Fully seeding this
+behaviour would require fixing Python's built-in random seed separately, which may
+interfere with convergence and is therefore not recommended. As a result, repeated runs
+may still produce slightly different clustering solutions. Repeating the training a
+number of times and taking a consensus assignment across runs is always recommended as
+good practice to verify the stability of the resulting partition.
+
 # ADVANCED
 The user can input their own preprocessed data file to be trained by Clust3D, by setting the preprocessing parameters to "none".  
 ```python
