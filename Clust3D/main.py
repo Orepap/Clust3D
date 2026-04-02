@@ -168,11 +168,8 @@ def Clust3D(data_file,
 
         if scaling_per_dimension:
             for i in range(data.shape[1]):
-                slice_ = data[:, i, :]
-                min_val = np.nanmin(slice_)
-                max_val = np.nanmax(slice_)
-                if max_val > min_val:
-                    data[:, i, :] = (slice_ - min_val) / (max_val - min_val)
+                scaler = scaler_class()
+                data[:, i, :] = scaler.fit_transform(data[:, i, :])
         else:
             original_shape = data.shape
             data = data.reshape(data.shape[0] * data.shape[1], data.shape[2])
