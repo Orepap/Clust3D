@@ -1,4 +1,4 @@
-# Clust3D - 3D Clustering tool
+# Clust3D - 3D Clustering tool (UPDATING - DO NOT CLONE)
 
 <p align="justify">
 Clust3D is a clustering tool designed for clustering 3D data, such as timeseries and multi-omic datasets, using a self-adjusting neural network.
