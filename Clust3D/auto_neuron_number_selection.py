@@ -46,7 +46,7 @@ def get_number_of_neurons(nn, neuron_init, lr_0, MDC_data, neighbors,
             std.append(np.mean([
                 _norm(neuron, n, ord=ord, nan_mask=nan_mask)
                 for n in neurons
-                if _norm(neuron, n, ord=ord, nan_mask=nan_mask) != 0
+                if _norm(neuron, n, ord=ord, nan_mask=nan_mask) not in (0, np.inf)
             ]))
         std_mean_all = np.mean(std)
 
