@@ -170,6 +170,7 @@ good practice to verify the stability of the resulting partition.
 
 # ADVANCED
 <p align="justify">
+ 
 The user can input their own preprocessed data file to be trained by Clust3D, by setting the preprocessing parameters to "none".  
 ```python
 from Clust3D.main import Clust3D
