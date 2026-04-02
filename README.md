@@ -58,7 +58,7 @@ Folder "Examples" provides three usage examples based on timeseries gene express
 
 
 # UPDATES
-
+<p align="justify">
 **v1.1** — Added `scaling_per_dimension` parameter enabling independent per-dimension (layer) scaling.
 When `scaling_per_dimension=True`, a separate scaler is fitted and applied to each
 dimension (layer) independently, preserving the relative structure within each dimension (layer). This is
@@ -76,7 +76,7 @@ and is not included in the standalone version.
 
 
 # USAGE WITH NaN MASKING
-
+<p align="justify">
 For datasets containing missing values that should be excluded from distance
 computations rather than imputed, set `nan_mask=True`. This enables the masked
 Frobenius distance, which restricts distance computations to non-NaN
@@ -101,6 +101,7 @@ clusters, neurons, cl_labels = Clust3D(
 
 
 # INPUT FILES
+<p align="justify">
 Clust3D requires two files as input.  
 The first one is the data file (txt or csv) which contains a table with the features (rows) and all the samples of the different time intervals (columns).  
 The second one, is a UTF-8 or ANSI format txt file, in which the correlation between the class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals has to be specified.
@@ -141,7 +142,7 @@ The selected norm is the Frobenius norm:
 The file "Equation.docx" details all the equations used for the neural network training.  
 
 # STOCHASTICITY
-
+<p align="justify">
 Clust3D involves stochasticity at two stages. First, during neuron initialization,
 when `neuron_init="points"` and `depth` is a finite integer, candidate data-point
 combinations are sampled randomly, meaning different runs may initialize neurons from
@@ -160,6 +161,7 @@ number of times and taking a consensus assignment across runs is always recommen
 good practice to verify the stability of the resulting partition.
 
 # ADVANCED
+<p align="justify">
 The user can input their own preprocessed data file to be trained by Clust3D, by setting the preprocessing parameters to "none".  
 ```python
 from Clust3D.main import Clust3D
