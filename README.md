@@ -127,7 +127,6 @@ The file "Equation.docx" details all the equations used for the neural network t
 # STOCHASTICITY
 
 <p align="justify">
- 
 Clust3D involves stochasticity at two stages. First, during neuron initialization,
 when `neuron_init="points"` and `depth` is a finite integer, candidate data-point
 combinations are sampled randomly, meaning different runs may initialize neurons from
