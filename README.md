@@ -69,6 +69,7 @@ are scaled jointly. This update is available in the Python package only and is n
 included in the standalone version.
 
 <p align="justify">
+ 
 **v1.1** — Added `nan_mask` parameter enabling masked Frobenius distance computation.
 When `nan_mask=True`, distance computations between sample matrices and neuron matrices
 are restricted to non-NaN overlapping entries, allowing layers with structured
