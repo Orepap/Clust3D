@@ -164,7 +164,7 @@ randomizing sample presentation order is a well-established practice in neural n
 training that helps avoid local minima and improves convergence. Fully seeding this
 behaviour would require fixing Python's built-in random seed separately, which may
 interfere with convergence and is therefore not recommended. As a result, repeated runs
-may still produce slightly different clustering solutions. Repeating the training a
+may still produce different clustering solutions. Repeating the training a
 number of times and taking a consensus assignment across runs is always recommended as
 good practice to verify the stability of the resulting partition.
 
