@@ -17,28 +17,25 @@ GitHub                                  :    https://github.com/Orepap/Clust3D
 
 """
 
+import time
 import random
 import numpy as np
 import pandas as pd
-import time
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+from Clust3D.imputation import impute
+from Clust3D.dim_red import apply_dim_red
+from Clust3D.inputs import inputs
+from Clust3D.auto_neuron_number_selection import get_number_of_neurons
 from Clust3D.neuron_init import neurons_initialization
+from Clust3D.training import train_Clust3D
 
 
-def _norm(a, b, ord=None, nan_mask=False):
-    """
-    Compute the distance between two arrays a and b.
-
-    If nan_mask=True, restricts the computation to non-NaN overlapping
-    elements (masked Frobenius norm). Returns np.inf if no valid overlap.
-    If nan_mask=False, uses the standard numpy norm.
-    """
-    if nan_mask:
-        mask = ~np.isnan(a) & ~np.isnan(b)
-        if not np.any(mask):
-            return np.inf
-        return np.linalg.norm((a - b)[mask], ord=ord)
-    else:
-        return float(np.linalg.norm(a - b, ord=ord))
+def masked_norm(a, b, ord=2):
+    mask = ~np.isnan(a) & ~np.isnan(b)
+    if not np.any(mask):
+        return np.inf
+    return np.linalg.norm((a - b)[mask], ord=ord)
 
 
 def Clust3D(data_file,
@@ -57,85 +54,49 @@ def Clust3D(data_file,
             t1=1,
             t2=1,
             random_state=random.randint(1, 10000),
-            depth=100000,
-            nan_mask=False):
-    """
-    nan_mask : bool, default False
-        If True, the Frobenius distance between a sample matrix and a neuron
-        matrix is computed only over non-missing (non-NaN) overlapping entries.
-        This allows dimensions with structured missingness to contribute to
-        cluster geometry without being confounded by missingness-driven
-        artifacts. Set to True when the input data contain NaN values that
-        should be excluded from distance computations rather than imputed.
-        If False, the standard Frobenius norm is used and NaNs must be
-        handled via the imputation parameter beforehand.
-    """
+            depth=100000):
 
     rng = np.random.RandomState(random_state)
     t0 = time.time()
     print()
 
     # Load data file
-    if data_file[-4:] == ".txt":
-        try:
+    try:
+        if data_file.endswith(".txt"):
             df = pd.read_csv(data_file, delimiter="\t", index_col=0)
             print("Data file loaded")
-        except FileNotFoundError:
-            print()
-            print("Enter a valid data file")
-            input("Press enter to close program")
-            exit()
-
-    elif data_file[-4:] == ".csv":
-        try:
+        elif data_file.endswith(".csv"):
             df = pd.read_csv(data_file, index_col=0)
             print("Csv file loaded")
-        except FileNotFoundError:
-            print()
-            print("Enter a valid data file")
-            input("Press enter to close program")
-            exit()
+        else:
+            raise ValueError("Unsupported file extension for data file.")
+    except FileNotFoundError:
+        print("\nEnter a valid data file")
+        input("Press enter to close program")
+        exit()
 
-    from Clust3D.imputation import impute
     df = impute(df, imputation)
     df_transposed = df.transpose()
 
     # Load correlation file
-    if correlation_file[-4:] == ".txt":
-        try:
+    try:
+        if correlation_file.endswith(".txt"):
             df_cor = pd.read_csv(correlation_file, header=None, delimiter=" ")
-            print("Correlation file loaded")
-            print()
-        except FileNotFoundError:
-            print()
-            print("Enter a valid correlation file")
-            input("Press enter to close program")
-            exit()
-
-    if correlation_file[-4:] == ".csv":
-        try:
+        elif correlation_file.endswith(".csv"):
             df_cor = pd.read_csv(correlation_file, header=None, delimiter=",")
-            print("Correlation file loaded")
-            print()
-        except FileNotFoundError:
-            print()
-            print("Enter a valid correlation file")
-            input("Press enter to close program")
-            exit()
+        else:
+            raise ValueError("Unsupported file extension for correlation file.")
+        print("Correlation file loaded\n")
+    except FileNotFoundError:
+        print("\nEnter a valid correlation file")
+        input("Press enter to close program")
+        exit()
 
-    correlation = []
-    for i in df_cor.index:
-        c = []
-        for j in range(len(df_cor.columns)):
-            c.append(df_cor.iloc[i][j])
-        correlation.append(c)
+    # Convert correlation dataframe to list of lists
+    correlation = df_cor.values.tolist()
 
-    data = []
-    for cor in correlation:
-        d = []
-        for sample in cor[1:]:
-            d.append(np.array(df_transposed.loc[sample]))
-        data.append(d)
+    # Build raw input data tensor
+    data = [[np.array(df_transposed.loc[sample]) for sample in cor[1:]] for cor in correlation]
     data = np.array(data)
 
     # Set distance metric
@@ -147,12 +108,12 @@ def Clust3D(data_file,
         print("ERROR: Enter 'euclidean' or 'manhattan' for the 'distance' parameter value")
         exit()
 
+    # Handle default t1 and t2 if not set
     if t1 == 1 and t2 == 1:
         t1 = int(epochs / 2)
         t2 = int(epochs)
 
     # Scale input data
-    from sklearn.preprocessing import MinMaxScaler, StandardScaler
     if scaling == "minmax":
         scaler_class = MinMaxScaler
     elif scaling == "standard":
@@ -177,84 +138,76 @@ def Clust3D(data_file,
             data = scaler.fit_transform(data)
             data = data.reshape(original_shape)
 
+    # Dimensionality reduction
     if dim_red not in ["pca_elbow", "none", "pca_auto", "t-sne", "ica"]:
         print("ERROR: Refer to the parameters docx for the available dimensionality reduction options")
         exit()
 
-    from Clust3D.dim_red import apply_dim_red
     input_data, data_max, data_min = apply_dim_red(dim_red, data, correlation)
 
-    from Clust3D.inputs import inputs
+    # Validate and format all inputs
     MDC_data, neighbors, n_neurons, epochs, lr_0, t1, t2, depth, max_n_neurons = inputs(
         input_data, neighbors, n_neurons, epochs, lr, t1, t2, depth, max_n_neurons, dim_red, neuron_init
     )
 
+    # If neuron count unknown, find optimal number with elbow method
     if n_neurons == -1:
-        print()
         print("The neural network is being trained...")
         print("Finding the optimal no. of neurons based on the elbow rule...")
-        print("This may take a few minutes")
-        print()
+        print("This may take a few minutes\n")
 
-        from Clust3D.auto_neuron_number_selection import get_number_of_neurons
         best = get_number_of_neurons(
             max_n_neurons, neuron_init, lr_0, MDC_data, neighbors,
-            correlation, data_min, data_max, depth, rng, ord, nan_mask
+            correlation, data_min, data_max, depth, rng, ord, random_state
         )
         n_neurons = best
 
         print(f"Best no. of neurons: {n_neurons}")
-        print(f"The neural network is being trained with {n_neurons} neurons...")
-        print()
+        print(f"The neural network is being trained with {n_neurons} neurons...\n")
 
         neurons = neurons_initialization(
             neuron_init, correlation, MDC_data, n_neurons,
-            data_min, data_max, depth, rng, ord, nan_mask
+            data_min, data_max, depth, rng, ord
         )
 
-        # Correctly filter out both zero and inf distances
-        std = []
-        for neuron in neurons:
-            std.append(np.mean([
-                _norm(neuron, n, ord=ord, nan_mask=nan_mask)
+        std = [
+            np.mean([
+                masked_norm(neuron, n, ord=ord)
                 for n in neurons
-                if _norm(neuron, n, ord=ord, nan_mask=nan_mask) not in (0, np.inf)
-            ]))
+                if masked_norm(neuron, n, ord=ord) not in (0, np.inf)
+            ])
+            for neuron in neurons
+        ]
         std_mean_all = np.mean(std)
 
-        from Clust3D.training import train_Clust3D
         epochs = n_neurons * 1000
         cl_labels, neurons, MDC_data, clusters_data, clusters = train_Clust3D(
             epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data,
-            neighbors, std_mean_all, correlation, ord, nan_mask
+            neighbors, std_mean_all, correlation, ord, random_state
         )
 
     else:
-        print()
-        print("The neural network is being trained...")
-        print()
+        print("The neural network is being trained...\n")
 
         neurons = neurons_initialization(
             neuron_init, correlation, MDC_data, n_neurons,
-            data_min, data_max, depth, rng, ord, nan_mask
+            data_min, data_max, depth, rng, ord
         )
 
-        # Correctly filter out both zero and inf distances
-        std = []
-        for neuron in neurons:
-            std.append(np.mean([
-                _norm(neuron, n, ord=ord, nan_mask=nan_mask)
+        std = [
+            np.mean([
+                masked_norm(neuron, n, ord=ord)
                 for n in neurons
-                if _norm(neuron, n, ord=ord, nan_mask=nan_mask) not in (0, np.inf)
-            ]))
+                if masked_norm(neuron, n, ord=ord) not in (0, np.inf)
+            ])
+            for neuron in neurons
+        ]
         std_mean_all = np.mean(std)
 
-        from Clust3D.training import train_Clust3D
         cl_labels, neurons, MDC_data, clusters_data, clusters = train_Clust3D(
             epochs, lr_0, t1, t2, neurons, n_neurons, MDC_data,
-            neighbors, std_mean_all, correlation, ord, nan_mask
+            neighbors, std_mean_all, correlation, ord, random_state
         )
 
-    print(f"The neural network trained in {np.round(time.time() - t0, 0)} seconds")
-    print()
+    print(f"The neural network trained in {np.round(time.time() - t0, 0)} seconds\n")
     return clusters, neurons, cl_labels
