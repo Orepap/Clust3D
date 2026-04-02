@@ -105,6 +105,7 @@ clusters, neurons, cl_labels = Clust3D(
 
 # INPUT FILES
 <p align="justify">
+ 
 Clust3D requires two files as input.  
 The first one is the data file (txt or csv) which contains a table with the features (rows) and all the samples of the different time intervals (columns).  
 The second one, is a UTF-8 or ANSI format txt file, in which the correlation between the class labels, for which the clustering will take place, along with their corresponding samples in the different time intervals has to be specified.
@@ -112,6 +113,7 @@ The second one, is a UTF-8 or ANSI format txt file, in which the correlation bet
 Specifically for Data Matrix Files from the Gene Expression Omnibus, the following steps are required in preparation of those two files.
 
 <p align="justify">
+ 
 For the **data file**, the user needs to:  
 •	Download the Series Matrix File txt file of the desired GSE Series from the Gene Expression Omnibus  
 •	Delete everything from within the txt file up until (and) the line "!series_matrix_table_begin"  
