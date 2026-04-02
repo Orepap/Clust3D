@@ -69,6 +69,7 @@ dimension (layer) independently, preserving the relative structure within each d
 the recommended setting when the dimensions of the input tensor have different value
 ranges or distributions. When `scaling_per_dimension=False` (default), all dimensions (layers)
 are scaled jointly. 
+
 In addition, all distance computations now use a masked Frobenius norm
 that operates only over non-missing (non-NaN) overlapping entries between each sample-neuron
 pair, allowing dimensions with structured missingness to contribute to cluster geometry
