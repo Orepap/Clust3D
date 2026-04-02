@@ -46,7 +46,7 @@ def Clust3D(data_file,
     nan_mask : bool, default False
         If True, the Frobenius distance between a sample matrix and a neuron
         matrix is computed only over non-missing (non-NaN) overlapping entries.
-        This allows omic layers with structured missingness to contribute to
+        This allows layers with structured missingness to contribute to
         cluster geometry without being confounded by missingness-driven
         artifacts. Set to True when the input data contain NaN values that
         should be excluded from distance computations rather than imputed.
