@@ -22,15 +22,15 @@ ______________________________________________________________________________
 ______________________________________________________________________________
 
 
-**scaling_per_dimension**: Boolean. Controls whether scaling is applied independently per dimension or jointly across all layers. (Default: False)
+**scaling_per_dimension**: Boolean. Controls whether scaling is applied independently per dimension (layer) or jointly across all layers. (Default: False)
 
-	True: 	Each dimension is scaled independently. A separate scaler is fitted and applied
-			to each dimension, preserving the relative structure within each dimension.
+	True: 	Each dimension (layer) is scaled independently. A separate scaler is fitted and applied
+			to each dimension (layer), preserving the relative structure within each dimension (layer).
 			This is the recommended setting for multi-omic tensors where omic layers
 			have different value ranges or distributions.
 
-	False: 	All omic layers are scaled jointly after reshaping the tensor into a 2D matrix.
-			A single scaler is fitted across all layers combined.
+	False: 	All dimension (layers) are scaled jointly after reshaping the tensor into a 2D matrix.
+			A single scaler is fitted across all dimension (layers) combined.
 
 *Tips*  
 When working with multi-omic data,
