@@ -1,7 +1,7 @@
 # Clust3D - 3D Clustering tool
 
 <p align="justify">
-Clust3D is a clustering tool designed for clustering 3D data, such as timeseries, using a self-adjusting neural network.
+Clust3D is a clustering tool designed for clustering 3D data, such as timeseries and multi-omic datasets, using a self-adjusting neural network.
 Clust3D provides the capability to directly cluster 3D data, exploiting the entire data structure, without the need for flattening or decomposition of one of the dimensions. </p>
 
 
@@ -38,7 +38,6 @@ scikit-learn >= 1.5.2
 matplotlib >= 3.10.0
 scipy     >= 1.14.1
 fancyimpute >= 0.7.0
-
 ```
 
 # USAGE
