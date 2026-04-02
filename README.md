@@ -140,11 +140,11 @@ exhaustively evaluates every possible combination and makes initialization deter
 Setting `random_state` to a fixed integer also controls the initialization seed, though
 it does not affect the second source of stochasticity. During training, the order in
 which samples are presented to the network is shuffled at every epoch using Python's
-built-in random module, which is independent of `random_state`. This is intentional —
-randomizing sample presentation order is a well-established practice in neural network
-training that helps avoid local minima and improves convergence. Fully seeding this
-behaviour would require fixing Python's built-in random seed separately, which may
-interfere with convergence and is therefore not recommended.
+built-in random module, which is independent of `random_state`. This is intentional due
+to the fact that randomizing sample presentation order is a well-established practice
+in neural network training that helps avoid local minima and improves convergence. 
+Fully seeding this behaviour would require fixing Python's built-in random seed separately, 
+which may interfere with convergence and is therefore not recommended.
 
 **As a result, repeated runs may still produce different clustering solutions. Repeating the training a
 number of times and taking a consensus assignment across runs is always recommended as
