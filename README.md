@@ -132,13 +132,13 @@ The file "Equation.docx" details all the equations used for the neural network t
 # STOCHASTICITY
 
 <p align="justify">
-Clust3D involves stochasticity at two stages. First, during neuron initialization,
+Clust3D involves stochasticity at two stages. (i) First, during neuron initialization,
 when `neuron_init="points"` and `depth` is a finite integer, candidate data-point
 combinations are sampled randomly, meaning different runs may initialize neurons from
 different starting points. This can be fully eliminated by setting `depth="auto"`, which
 exhaustively evaluates every possible combination and makes initialization deterministic.
 Setting `random_state` to a fixed integer also controls the initialization seed, though
-it does not affect the second source of stochasticity. During training, the order in
+it does not affect the second source of stochasticity. (ii) During training, the order in
 which samples are presented to the network is shuffled at every epoch using Python's
 built-in random module, which is independent of `random_state`. This is intentional due
 to the fact that randomizing sample presentation order is a well-established practice
